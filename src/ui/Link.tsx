@@ -5,6 +5,8 @@
 // 		align-items: center;
 // 		gap: 1.2rem;
 
+import { ComponentProps } from "react"
+
 // 		color: var(--color-grey-600);
 // 		font-size: 1.6rem;
 // 		font-weight: 500;
@@ -37,20 +39,17 @@
 // 	}
 // `
 
-type Props = {
+type Props = ComponentProps<"a"> & {
 	href: string
 	children: React.ReactNode | string
 	Svg: any
 }
 
-export default function Link({ children, href, Svg }: Props) {
+export default function Link({ ...props }: Props) {
 	return (
 		<a
+			{...props}
 			className="flex items-center gap-5 text-grey-600 text-[1.6rem] font-medium py-[1.2rem] px-[2.4rem] transition-all hover:text-grey-800 hover:bg-grey-50 hover:rounded-sm active:text-grey-800 active:bg-grey-50 active:rounded-sm"
-			href={href}
-		>
-			<Svg className="w-[2.4rem] h-[2.4rem] text-grey-400 transition-all hover:text-brand-600 active:text-brand-600 " />
-			{children}
-		</a>
+		></a>
 	)
 }

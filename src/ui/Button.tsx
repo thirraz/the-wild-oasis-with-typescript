@@ -2,6 +2,8 @@
   USE class-variance-authority package (search in its documentation)
 */
 
+import { ComponentProps } from "react"
+
 const sizes = {
 	small: css`
 		font-size: 1.2rem;
@@ -48,4 +50,15 @@ const variations = {
 			background-color: var(--color-red-800);
 		}
 	`
+}
+
+type Props = ComponentProps<"button">
+
+export function Button(props: Props) {
+	return (
+		<button
+			{...props}
+			className="text-[1.4rem] py-[1.2rem] px-[1.6rem] font-medium rounded-sm bg-brand-600 text-brand-50 shadow-sm pointer hover:bg-brand-700"
+		/>
+	)
 }
