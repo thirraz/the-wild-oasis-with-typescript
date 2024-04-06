@@ -1,9 +1,9 @@
-type Props = {
-	children: React.ReactNode
-}
+import { ComponentProps } from "react"
 
-export function TableOperations({ children }: Props) {
-	return <div className="flex items-center gap-[1.6rem]">{children}</div>
+type Props = ComponentProps<"div">
+
+export function TableOperations(props: Props) {
+	return <div {...props} className="flex items-center gap-[1.6rem]" />
 }
 
 export default TableOperations

@@ -1,9 +1,9 @@
-type Props = {
-	children: React.ReactNode
-}
+import { ComponentProps } from "react"
 
-export function ButtonGroup({ children }: Props) {
-	return <div className="flex gap-5 justify-end">{children}</div>
+type Props = ComponentProps<"div">
+
+export function ButtonGroup(props: Props) {
+	return <div {...props} className="flex gap-5 justify-end" />
 }
 
 export default ButtonGroup

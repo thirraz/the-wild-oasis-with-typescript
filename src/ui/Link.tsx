@@ -39,17 +39,12 @@ import { ComponentProps } from "react"
 // 	}
 // `
 
-type Props = ComponentProps<"a"> & {
-	href: string
-	children: React.ReactNode | string
-	Svg: any
-}
-
+type Props = ComponentProps<"a">
 export default function Link({ ...props }: Props) {
 	return (
 		<a
 			{...props}
 			className="flex items-center gap-5 text-grey-600 text-[1.6rem] font-medium py-[1.2rem] px-[2.4rem] transition-all hover:text-grey-800 hover:bg-grey-50 hover:rounded-sm active:text-grey-800 active:bg-grey-50 active:rounded-sm"
-		></a>
+		/>
 	)
 }

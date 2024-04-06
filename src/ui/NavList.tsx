@@ -1,7 +1,7 @@
-type Props = {
-	children: React.ReactNode
-}
+import { ComponentProps } from "react"
 
-export default function NavList({ children }: Props) {
-	return <ul className="flex flex-col gap-[0.8rem]">{children}</ul>
+type Props = ComponentProps<"ul">
+
+export default function NavList(props: Props) {
+	return <ul {...props} className="flex flex-col gap-[0.8rem]" />
 }

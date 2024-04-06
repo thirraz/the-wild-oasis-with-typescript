@@ -4,6 +4,8 @@
 // 	border: 1px solid var(--color-grey-100);
 // 	border-radius: var(--border-radius-md);
 
+import { ComponentProps } from "react"
+
 // 	padding: 4.8rem;
 // 	flex: 0 1 96rem;
 // 	text-align: center;
@@ -19,12 +21,10 @@
 // 	}
 // `
 
-type Props = {
-	children: React.ReactNode
-}
+type Props = ComponentProps<"div">
 
-export function Box({ children }: Props) {
-	return <div>{children}</div>
+export function Box(props: Props) {
+	return <div {...props} />
 	/* 
     ADD <h1> AND <p> LATER 
   */

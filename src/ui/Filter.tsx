@@ -1,11 +1,12 @@
-type Props = {
-	children: React.ReactNode
-}
+import { ComponentProps } from "react"
 
-export function Filter({ children }: Props) {
+type Props = ComponentProps<"div">
+
+export function Filter(props: Props) {
 	return (
-		<div className="border-[1px] border-grey-100 bg-grey-0 shadow-sm rounded-sm p-[0.4rem] flex gap-[0.4rem]">
-			{children}
-		</div>
+		<div
+			{...props}
+			className="border-[1px] border-grey-100 bg-grey-0 shadow-sm rounded-sm p-[0.4rem] flex gap-[0.4rem]"
+		/>
 	)
 }
