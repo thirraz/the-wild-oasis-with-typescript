@@ -50,7 +50,7 @@ import { ComponentProps } from "react"
 import { tv, VariantProps } from "tailwind-variants"
 
 const button = tv({
-	base: "text-[1.4rem] py-[1.2rem] px-[1.6rem] font-medium rounded-sm bg-brand-600 text-brand-50 shadow-sm pointer hover:bg-brand-700",
+	base: "rounded-sm shadow-sm",
 	variants: {
 		size: {
 			small: "text-[1.2rem] py-[0.4rem] px-[0.8rem] uppercase font-bold text-center",
@@ -60,9 +60,13 @@ const button = tv({
 		color: {
 			primary: "text-brand-50 bg-brand-600 hover:bg-brand-700",
 			secondary:
-				"text-grey-600 bg-grey-0 border-[1px] border-grey-200 hover:bg-grey-50",
+				"text-grey-600 bg-grey-0 border-[1px] border-grey-200 hover:bg-grey-200",
 			danger: "text-red-100 bg-red-700 hover:bg-red-800"
 		}
+	},
+	defaultVariants: {
+		size: "medium",
+		color: "primary"
 	}
 })
 

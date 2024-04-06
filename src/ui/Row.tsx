@@ -1,7 +1,22 @@
 import { ComponentProps } from "react"
+import { tv, VariantProps } from "tailwind-variants"
 
-type Props = ComponentProps<"div">
+const row = tv({
+	base: "flex",
+	variants: {
+		direction: {
+			horizontal: "justify-between items-center",
+			vertical: "flex-col gap-[1.6rem]"
+		}
+	},
+	defaultVariants: {
+		direction: "vertical"
+	}
+})
 
-export default function Row(props: Props) {
-	return <div {...props} />
+type Props = ComponentProps<"div"> &
+	VariantProps<typeof row> & { className?: string }
+
+export default function Row({ direction, className, ...props }: Props) {
+	return <div {...props} className={row({ direction, className })} />
 }

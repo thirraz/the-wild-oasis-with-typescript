@@ -1,13 +1,12 @@
-import Heading from "../ui/Heading";
-import Row from "../ui/Row";
+import Row from "../ui/Row"
 
 function Dashboard() {
-  return (
-    <Row type="horizontal">
-      <Heading as="h1">Dashboard</Heading>
-      <p>TEST</p>
-    </Row>
-  );
+	return (
+		<Row direction="horizontal">
+			<h1>Dashboard</h1>
+			<p>TEST</p>
+		</Row>
+	)
 }
 
-export default Dashboard;
+export default Dashboard

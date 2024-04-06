@@ -55,6 +55,7 @@ export default {
 			/* Red */
 			"red-100": "#fee2e2",
 			"red-700": "#b91c1c",
+			"red-800": "#991b1b",
 
 			"backdrop-color": "rgba(255, 255, 255, .1)"
 		},
@@ -68,6 +69,9 @@ export default {
 			sm: "5px",
 			md: "7px",
 			lg: "9px"
+		},
+		fontFamily: {
+			sans: "'Poppins',sans-serif"
 		}
 	},
 	plugins: []

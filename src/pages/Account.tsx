@@ -1,22 +1,21 @@
-import Heading from "../ui/Heading";
-import Row from "../ui/Row";
+import Row from "../ui/Row"
 
 function Account() {
-  return (
-    <>
-      <Heading as="h1">Update your account</Heading>
+	return (
+		<>
+			<h1>Update your account</h1>
 
-      <Row>
-        <Heading as="h3">Update user data</Heading>
-        <p>Update user data form</p>
-      </Row>
+			<Row>
+				<h3>Update user data</h3>
+				<p>Update user data form</p>
+			</Row>
 
-      <Row>
-        <Heading as="h3">Update password</Heading>
-        <p>Update user password form</p>
-      </Row>
-    </>
-  );
+			<Row>
+				<h3>Update password</h3>
+				<p>Update user password form</p>
+			</Row>
+		</>
+	)
 }
 
-export default Account;
+export default Account
