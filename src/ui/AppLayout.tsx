@@ -4,7 +4,7 @@ import Header from "./Header"
 
 export default function AppLayout() {
 	return (
-		<div className="h-[100dvh] grid [grid-template-columns:26rem_1fr] [grid-template-rows:auto_1fr]">
+		<div className="h-[100dvh] grid [grid-template-columns:20rem_1fr] [grid-template-rows:auto_1fr]">
 			<Sidebar />
 			<Header />
 
