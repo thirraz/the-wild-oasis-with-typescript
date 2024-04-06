@@ -52,6 +52,10 @@ export default {
 			"indigo-100": "#e0e7ff",
 			"indigo-700": "#4338ca",
 
+			/* Red */
+			"red-100": "#fee2e2",
+			"red-700": "#b91c1c",
+
 			"backdrop-color": "rgba(255, 255, 255, .1)"
 		},
 		boxShadow: {
