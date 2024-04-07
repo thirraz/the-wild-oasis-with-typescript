@@ -2,6 +2,9 @@ import { useForm } from "react-hook-form"
 
 import Form from "../../ui/Form"
 import { Button } from "../../ui/Button"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
+import { createCabins } from "../../services/apiCabins"
+import toast from "react-hot-toast"
 
 // const FormRow = styled.div`
 // 	display: grid;
@@ -39,19 +42,33 @@ import { Button } from "../../ui/Button"
 // 	color: var(--color-red-700);
 // `
 
-type CreateCabinFields = {
+export type CreateCabinFields = {
 	name: string
 	maxCapacity: number
 	regularPrice: number
 	discount: number
 	description: string
+	image?: string
 }
 
 function CreateCabinForm() {
-	const { register, handleSubmit } = useForm<CreateCabinFields>()
+	const queryClient = useQueryClient()
+
+	const { register, handleSubmit, reset } = useForm<CreateCabinFields>()
+	const { mutate, isPending: isCreating } = useMutation({
+		mutationFn: createCabins,
+		onSuccess: () => {
+			queryClient.invalidateQueries({
+				queryKey: ["cabins"]
+			})
+			toast.success("Cabin created!")
+			reset()
+		},
+		onError: err => toast.error(err.message)
+	})
 
 	function onSubmit(data: CreateCabinFields) {
-		console.log(data)
+		mutate(data)
 	}
 
 	return (
@@ -64,6 +81,7 @@ function CreateCabinForm() {
 					className="input"
 					type="text"
 					id="name"
+					placeholder="Example: 001"
 					{...register("name")}
 				/>
 			</div>
@@ -76,6 +94,7 @@ function CreateCabinForm() {
 					className="input"
 					type="number"
 					id="maxCapacity"
+					placeholder="Example: 4"
 					{...register("maxCapacity")}
 				/>
 			</div>
@@ -88,6 +107,7 @@ function CreateCabinForm() {
 					className="input"
 					type="number"
 					id="regularPrice"
+					placeholder="Example: 350"
 					{...register("regularPrice")}
 				/>
 			</div>
@@ -99,8 +119,8 @@ function CreateCabinForm() {
 				<input
 					type="number"
 					id="discount"
-					defaultValue={0}
 					className="input"
+					placeholder="Example: 50"
 					{...register("discount")}
 				/>
 			</div>
@@ -132,8 +152,8 @@ function CreateCabinForm() {
 			<div className="form-row">
 				{/* type is an HTML attribute! */}
 				<Button color="secondary" /* type="reset" */>Cancel</Button>
-				<Button size="medium" color="primary">
-					Edit cabin
+				<Button size="medium" color="primary" disabled={isCreating}>
+					Add cabin
 				</Button>
 			</div>
 		</Form>
