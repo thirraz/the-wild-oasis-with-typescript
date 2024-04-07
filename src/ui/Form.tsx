@@ -1,5 +1,5 @@
 type Props = {
-	type: string | "modal"
+	type?: string | "modal"
 	children: React.ReactNode
 }
 

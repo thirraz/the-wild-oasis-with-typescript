@@ -25,7 +25,7 @@
 	}
 
 	.form-row {
-		@apply grid items-center [grid-template-columns:24rem_1fr_1.2fr] gap-[2.4rem] py-[1rem] first:pt-0 last:pb-0 [:not(:last-child)]:border-b-[1px] [:not(:last-child)]:border-b-grey-100 has-[button]:flex has-[button]:justify-end has-[button]:gap-[1.2rem];
+		@apply grid items-center [grid-template-columns:24rem_1fr_1.2fr] gap-[2.4rem] py-[1rem] first:pt-0 last:pb-0 [&:not(:last-child)]:border-b-[1px] [&:not(:last-child)]:border-b-grey-100 has-[button]:flex has-[button]:justify-end has-[button]:gap-[1.2rem];
 	}
 }
 

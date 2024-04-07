@@ -1,89 +1,106 @@
-import styled from "styled-components";
+import Input from "../../ui/Input"
+import Form from "../../ui/Form"
+import { Button } from "../../ui/Button"
 
-import Input from "../../ui/Input";
-import Form from "../../ui/Form";
-import Button from "../../ui/Button";
-import FileInput from "../../ui/FileInput";
-import Textarea from "../../ui/Textarea";
+// const FormRow = styled.div`
+// 	display: grid;
+// 	align-items: center;
+// 	grid-template-columns: 24rem 1fr 1.2fr;
+// 	gap: 2.4rem;
 
-const FormRow = styled.div`
-  display: grid;
-  align-items: center;
-  grid-template-columns: 24rem 1fr 1.2fr;
-  gap: 2.4rem;
+// 	padding: 1.2rem 0;
 
-  padding: 1.2rem 0;
+// 	&:first-child {
+// 		padding-top: 0;
+// 	}
 
-  &:first-child {
-    padding-top: 0;
-  }
+// 	&:last-child {
+// 		padding-bottom: 0;
+// 	}
 
-  &:last-child {
-    padding-bottom: 0;
-  }
+// 	&:not(:last-child) {
+// 		border-bottom: 1px solid var(--color-grey-100);
+// 	}
 
-  &:not(:last-child) {
-    border-bottom: 1px solid var(--color-grey-100);
-  }
+// 	&:has(button) {
+// 		display: flex;
+// 		justify-content: flex-end;
+// 		gap: 1.2rem;
+// 	}
+// `
 
-  &:has(button) {
-    display: flex;
-    justify-content: flex-end;
-    gap: 1.2rem;
-  }
-`;
+// const Label = styled.label`
+// 	font-weight: 500;
+// `
 
-const Label = styled.label`
-  font-weight: 500;
-`;
-
-const Error = styled.span`
-  font-size: 1.4rem;
-  color: var(--color-red-700);
-`;
+// const Error = styled.span`
+// 	font-size: 1.4rem;
+// 	color: var(--color-red-700);
+// `
 
 function CreateCabinForm() {
-  return (
-    <Form>
-      <FormRow>
-        <Label htmlFor="name">Cabin name</Label>
-        <Input type="text" id="name" />
-      </FormRow>
+	return (
+		<Form>
+			<div className="form-row">
+				<label className="label" htmlFor="name">
+					Cabin name
+				</label>
+				<Input type="text" id="name" />
+			</div>
 
-      <FormRow>
-        <Label htmlFor="maxCapacity">Maximum capacity</Label>
-        <Input type="number" id="maxCapacity" />
-      </FormRow>
+			<div className="form-row">
+				<label className="label" htmlFor="maxCapacity">
+					Maximum capacity
+				</label>
+				<Input type="number" id="maxCapacity" />
+			</div>
 
-      <FormRow>
-        <Label htmlFor="regularPrice">Regular price</Label>
-        <Input type="number" id="regularPrice" />
-      </FormRow>
+			<div className="form-row">
+				<label className="label" htmlFor="regularPrice">
+					Regular price
+				</label>
+				<Input type="number" id="regularPrice" />
+			</div>
 
-      <FormRow>
-        <Label htmlFor="discount">Discount</Label>
-        <Input type="number" id="discount" defaultValue={0} />
-      </FormRow>
+			<div className="form-row">
+				<label className="label" htmlFor="discount">
+					Discount
+				</label>
+				<Input type="number" id="discount" defaultValue={0} />
+			</div>
 
-      <FormRow>
-        <Label htmlFor="description">Description for website</Label>
-        <Textarea type="number" id="description" defaultValue="" />
-      </FormRow>
+			<div className="form-row">
+				<label className="label" htmlFor="description">
+					Description for website
+				</label>
+				<textarea
+					id="description"
+					defaultValue=""
+					className="py-[0.8rem] px-[1.2rem] border-[1px] border-grey-300 rounded-[5px] bg-grey-0 shadow-sm w-full h-32"
+				/>
+			</div>
 
-      <FormRow>
-        <Label htmlFor="image">Cabin photo</Label>
-        <FileInput id="image" accept="image/*" />
-      </FormRow>
+			<div className="form-row">
+				<label className="label" htmlFor="image">
+					Cabin photo
+				</label>
+				<input
+					type="image"
+					id="image"
+					accept="image/*"
+					className="input-btn text-[1.4rem] rounded-sm"
+				/>
+			</div>
 
-      <FormRow>
-        {/* type is an HTML attribute! */}
-        <Button variation="secondary" type="reset">
-          Cancel
-        </Button>
-        <Button>Edit cabin</Button>
-      </FormRow>
-    </Form>
-  );
+			<div className="form-row">
+				{/* type is an HTML attribute! */}
+				<Button color="secondary" /* type="reset" */>Cancel</Button>
+				<Button size="small" color="secondary">
+					Edit cabin
+				</Button>
+			</div>
+		</Form>
+	)
 }
 
-export default CreateCabinForm;
+export default CreateCabinForm
