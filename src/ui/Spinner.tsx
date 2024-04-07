@@ -1,12 +1,8 @@
-type Props = {
-	children: React.ReactNode
-}
+import { ImSpinner9 } from "react-icons/im"
 
-export function Spinner({ children }: Props) {
+export function Spinner() {
 	return (
-		<div className="my-[4.8rem] mx-auto aspect-[1] rounded-full bg-spinner-gradient animate-spin">
-			{children}
-		</div>
+		<ImSpinner9 className="my-[4.8rem] mx-auto rounded-full bg-spinner-gradient animate-spin text-[50px] text-brand-500" />
 	)
 }
 

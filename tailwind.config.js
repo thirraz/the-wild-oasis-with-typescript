@@ -71,7 +71,8 @@ export default {
 			lg: "9px"
 		},
 		fontFamily: {
-			sans: "'Poppins',sans-serif"
+			sans: "'Poppins',sans-serif",
+			sono: "'Sono', sans-serif"
 		}
 	},
 	plugins: []

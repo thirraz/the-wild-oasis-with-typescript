@@ -53,9 +53,9 @@ const button = tv({
 	base: "rounded-sm shadow-sm",
 	variants: {
 		size: {
-			small: "text-[1.2rem] py-[0.4rem] px-[0.8rem] uppercase font-bold text-center",
-			medium: "text-[1.4rem] py-[1.2rem] px-[1.6rem] font-semibold",
-			large: "text-[1.6rem] py-[1.2rem] px-[2.4rem] font-semibold"
+			small: "text-sm py-[0.4rem] px-[0.8rem] uppercase font-semibold text-center",
+			medium: "py-[1.2rem] px-[1.6rem] font-semibold",
+			large: "text-lg py-[1.2rem] px-[2.4rem] font-semibold"
 		},
 		color: {
 			primary: "text-brand-50 bg-brand-600 hover:bg-brand-700",

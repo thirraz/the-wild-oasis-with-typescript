@@ -12,11 +12,6 @@ import PageNotFound from "./pages/PageNotFound"
 import Login from "./pages/Login"
 import AppLayout from "./ui/AppLayout"
 
-/* 
-	isLoading is now called isPending
-	cacheTime option is now called gcTime 
-*/
-
 const queryClient = new QueryClient({
 	defaultOptions: {
 		queries: {
