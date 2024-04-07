@@ -41,25 +41,21 @@ import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { Button } from "../../ui/Button"
 import { formatCurrency } from "../../utils/helpers"
 import { deleteCabins } from "../../services/apiCabins"
+import toast from "react-hot-toast"
 
 type Props = {
-	cabinId: number | string
-	name: string
-	maxCapacity: number
-	regularPrice: number
-	discount: number
-	image: string
+	cabin: any
 }
 
-export default function CabinRow({
-	cabinId,
-	name,
-	maxCapacity,
-	regularPrice,
-	discount,
-	image
-}: Props) {
-	// const { id: cabinId, name, maxCapacity, regularPrice, discount, image } = cabin
+export default function CabinRow({ cabin }: Props) {
+	const {
+		id: cabinId,
+		name,
+		maxCapacity,
+		regularPrice,
+		discount,
+		image
+	} = cabin
 
 	const queryClient = useQueryClient()
 
@@ -70,9 +66,9 @@ export default function CabinRow({
 				queryKey: ["cabins"]
 			})
 
-			alert("Cabin successfully deleted!")
+			toast.success("Cabin successfully deleted!")
 		},
-		onError: err => alert(err)
+		onError: err => toast.error(err.message)
 	})
 
 	return (

@@ -11,16 +11,16 @@ function Cabins() {
 	// }, [])
 
 	return (
-		<>
+		<div className="space-y-8">
 			<Row direction="horizontal">
-				<h1>All cabins</h1>
+				<h1 className="text-4xl">All cabins</h1>
 				<p>Filter / Sort</p>
 			</Row>
 
 			<Row>
 				<CabinTable />
 			</Row>
-		</>
+		</div>
 	)
 }
 

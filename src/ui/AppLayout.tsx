@@ -9,7 +9,9 @@ export default function AppLayout() {
 			<Header />
 
 			<main className="bg-grey-50 p-[4rem_4.8rem_6.4rem]">
-				<Outlet />
+				<div className="max-w-[120rem] mx-auto">
+					<Outlet />
+				</div>
 			</main>
 		</div>
 	)

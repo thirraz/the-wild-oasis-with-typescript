@@ -3,7 +3,7 @@ import Row from "../ui/Row"
 function Account() {
 	return (
 		<>
-			<h1>Update your account</h1>
+			<h1 className="text-4xl">Update your account</h1>
 
 			<Row>
 				<h3>Update user data</h3>
