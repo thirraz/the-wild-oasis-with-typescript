@@ -5,6 +5,7 @@ import { Button } from "../../ui/Button"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { createCabins } from "../../services/apiCabins"
 import toast from "react-hot-toast"
+import FormRow from "../../ui/FormRow"
 
 // const FormRow = styled.div`
 // 	display: grid;
@@ -54,7 +55,11 @@ export type CreateCabinFields = {
 function CreateCabinForm() {
 	const queryClient = useQueryClient()
 
-	const { register, handleSubmit, reset } = useForm<CreateCabinFields>()
+	const { register, handleSubmit, reset, getValues, formState } =
+		useForm<CreateCabinFields>()
+
+	const { errors } = formState
+
 	const { mutate, isPending: isCreating } = useMutation({
 		mutationFn: createCabins,
 		onSuccess: () => {
@@ -71,85 +76,116 @@ function CreateCabinForm() {
 		mutate(data)
 	}
 
+	function onError(errors: any) {
+		console.log(errors)
+	}
+
 	return (
-		<Form onSubmit={handleSubmit(onSubmit)}>
-			<div className="form-row">
-				<label className="label" htmlFor="name">
-					Cabin name
-				</label>
+		<Form onSubmit={handleSubmit(onSubmit, onError)}>
+			<FormRow
+				label="Cabin name"
+				errorMessage={errors?.name?.message}
+				fieldName="name"
+			>
 				<input
 					className="input"
 					type="text"
 					id="name"
+					disabled={isCreating}
 					placeholder="Example: 001"
-					{...register("name")}
+					{...register("name", { required: "This field is required" })}
 				/>
-			</div>
+			</FormRow>
 
-			<div className="form-row">
-				<label className="label" htmlFor="maxCapacity">
-					Maximum capacity
-				</label>
+			<FormRow
+				label="Max capactity"
+				errorMessage={errors?.maxCapacity?.message}
+				fieldName="maxCapacity"
+			>
 				<input
 					className="input"
 					type="number"
 					id="maxCapacity"
+					disabled={isCreating}
 					placeholder="Example: 4"
-					{...register("maxCapacity")}
+					{...register("maxCapacity", {
+						required: "This field is required",
+						min: {
+							value: 1,
+							message: "Max capacity should be at least 1"
+						}
+					})}
 				/>
-			</div>
+			</FormRow>
 
-			<div className="form-row">
-				<label className="label" htmlFor="regularPrice">
-					Regular price
-				</label>
+			<FormRow
+				label="Regular price"
+				errorMessage={errors?.regularPrice?.message}
+				fieldName="regularPrice"
+			>
 				<input
 					className="input"
 					type="number"
 					id="regularPrice"
+					disabled={isCreating}
 					placeholder="Example: 350"
-					{...register("regularPrice")}
+					{...register("regularPrice", {
+						required: "This field is required",
+						min: {
+							value: 1,
+							message: "Regular price should be at least 1"
+						}
+					})}
 				/>
-			</div>
+			</FormRow>
 
-			<div className="form-row">
-				<label className="label" htmlFor="discount">
-					Discount
-				</label>
+			<FormRow
+				label="Discount"
+				errorMessage={errors?.discount?.message}
+				fieldName="discount"
+			>
 				<input
 					type="number"
 					id="discount"
+					disabled={isCreating}
 					className="input"
 					placeholder="Example: 50"
-					{...register("discount")}
+					{...register("discount", {
+						required: "This field is required",
+						validate: value =>
+							value < getValues().regularPrice ||
+							"Discount should be less than regular price"
+					})}
 				/>
-			</div>
+			</FormRow>
 
-			<div className="form-row">
-				<label className="label" htmlFor="description">
-					Description for website
-				</label>
+			<FormRow
+				label="Description"
+				errorMessage={errors?.description?.message}
+				fieldName="description"
+			>
+				{" "}
 				<textarea
 					id="description"
-					defaultValue=""
-					className="py-[0.8rem] px-[1.2rem] max-w-[20rem] border-[1px] border-grey-300 rounded-[5px] bg-grey-0 shadow-sm w-full h-32"
-					{...register("description")}
+					disabled={isCreating}
+					className="py-[0.8rem] px-[1.2rem] max-w-[17] w-[17rem] border-[1px] border-grey-300 rounded-[5px] bg-grey-0 shadow-sm h-32"
+					{...register("description", {
+						required: "This field is required"
+					})}
 				/>
-			</div>
+			</FormRow>
 
-			<div className="form-row">
-				<label className="label" htmlFor="image">
-					Cabin photo
-				</label>
+			<FormRow label="Cabin photo">
 				<input
 					type="file"
 					id="image"
+					disabled={isCreating}
 					accept="image/*"
-					className="input-btn text-[1.4rem] rounded-sm text-sm"
+					className="max-w-[17rem] input-btn text-[1.4rem] rounded-sm text-sm"
 				/>
-			</div>
+			</FormRow>
 
-			<div className="form-row">
+			<div className="flex gap-[1rem] text-sm justify-end mt-6">
 				{/* type is an HTML attribute! */}
 				<Button color="secondary" /* type="reset" */>Cancel</Button>
 				<Button size="medium" color="primary" disabled={isCreating}>
