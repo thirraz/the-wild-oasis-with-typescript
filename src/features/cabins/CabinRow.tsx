@@ -37,18 +37,46 @@
 //   color: var(--color-green-700);
 // `;
 
+import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { Button } from "../../ui/Button"
 import { formatCurrency } from "../../utils/helpers"
+import { deleteCabins } from "../../services/apiCabins"
 
 type Props = {
-	cabin: any
+	cabinId: number | string
+	name: string
+	maxCapacity: number
+	regularPrice: number
+	discount: number
+	image: string
 }
 
-export default function CabinRow({ cabin }: Props) {
-	const { name, maxCapacity, regularPrice, discount, image } = cabin
+export default function CabinRow({
+	cabinId,
+	name,
+	maxCapacity,
+	regularPrice,
+	discount,
+	image
+}: Props) {
+	// const { id: cabinId, name, maxCapacity, regularPrice, discount, image } = cabin
+
+	const queryClient = useQueryClient()
+
+	const { isPending: isDeleting, mutate } = useMutation({
+		mutationFn: (id: number | string) => deleteCabins(id),
+		onSuccess: () => {
+			queryClient.invalidateQueries({
+				queryKey: ["cabins"]
+			})
+
+			alert("Cabin successfully deleted!")
+		},
+		onError: err => alert(err)
+	})
 
 	return (
-		<div className="grid [grid-template-columns:0.6fr_1.8fr_2.2fr_repeat(3,1fr)] gap-[2.4rem] items-center py-[1.4rem] px-[2.4rem] ">
+		<div className="grid [grid-template-columns:0.6fr_1.8fr_2.2fr_repeat(3,1fr)] gap-[2.4rem] items-center py-[1rem] px-[1.2rem] ">
 			{/* If doesn't an image, replace by a <div> with a border */}
 			{image ? (
 				<img
@@ -69,7 +97,12 @@ export default function CabinRow({ cabin }: Props) {
 			<div className="font-sono font-bold text-green-700">
 				{formatCurrency(discount)}
 			</div>
-			<Button size="small" color="secondary">
+			<Button
+				onClick={() => mutate(cabinId)}
+				disabled={isDeleting}
+				size="small"
+				color="secondary"
+			>
 				Delete
 			</Button>
 		</div>
