@@ -1,21 +1,21 @@
 import React from "react"
 
 type Props = {
-	fieldName: string
+	htmlFor: string
 	label: string
 	children: React.ReactNode
 	errorMessage: string
 }
 
 export default function FormRow({
-	fieldName,
+	htmlFor,
 	label,
 	children,
 	errorMessage
 }: Partial<Props>) {
 	return (
 		<div className="form-row">
-			<label className="label" htmlFor={fieldName}>
+			<label className="label" htmlFor={htmlFor}>
 				{label}
 			</label>
 			<div className="flex flex-col gap-4">

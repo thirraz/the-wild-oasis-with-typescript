@@ -85,7 +85,7 @@ function CreateCabinForm() {
 			<FormRow
 				label="Cabin name"
 				errorMessage={errors?.name?.message}
-				fieldName="name"
+				htmlFor="name"
 			>
 				<input
 					className="input"
@@ -100,7 +100,7 @@ function CreateCabinForm() {
 			<FormRow
 				label="Max capactity"
 				errorMessage={errors?.maxCapacity?.message}
-				fieldName="maxCapacity"
+				htmlFor="maxCapacity"
 			>
 				<input
 					className="input"
@@ -121,7 +121,7 @@ function CreateCabinForm() {
 			<FormRow
 				label="Regular price"
 				errorMessage={errors?.regularPrice?.message}
-				fieldName="regularPrice"
+				htmlFor="regularPrice"
 			>
 				<input
 					className="input"
@@ -142,7 +142,7 @@ function CreateCabinForm() {
 			<FormRow
 				label="Discount"
 				errorMessage={errors?.discount?.message}
-				fieldName="discount"
+				htmlFor="discount"
 			>
 				<input
 					type="number"
@@ -162,7 +162,7 @@ function CreateCabinForm() {
 			<FormRow
 				label="Description"
 				errorMessage={errors?.description?.message}
-				fieldName="description"
+				htmlFor="description"
 			>
 				{" "}
 				<textarea
