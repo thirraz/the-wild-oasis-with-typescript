@@ -1,4 +1,3 @@
-import Input from "../../ui/Input"
 import Form from "../../ui/Form"
 import { Button } from "../../ui/Button"
 
@@ -45,28 +44,33 @@ function CreateCabinForm() {
 				<label className="label" htmlFor="name">
 					Cabin name
 				</label>
-				<Input type="text" id="name" />
+				<input className="input" type="text" id="name" />
 			</div>
 
 			<div className="form-row">
 				<label className="label" htmlFor="maxCapacity">
 					Maximum capacity
 				</label>
-				<Input type="number" id="maxCapacity" />
+				<input className="input" type="number" id="maxCapacity" />
 			</div>
 
 			<div className="form-row">
 				<label className="label" htmlFor="regularPrice">
 					Regular price
 				</label>
-				<Input type="number" id="regularPrice" />
+				<input className="input" type="number" id="regularPrice" />
 			</div>
 
 			<div className="form-row">
 				<label className="label" htmlFor="discount">
 					Discount
 				</label>
-				<Input type="number" id="discount" defaultValue={0} />
+				<input
+					type="number"
+					id="discount"
+					defaultValue={0}
+					className="input"
+				/>
 			</div>
 
 			<div className="form-row">
@@ -76,7 +80,7 @@ function CreateCabinForm() {
 				<textarea
 					id="description"
 					defaultValue=""
-					className="py-[0.8rem] px-[1.2rem] border-[1px] border-grey-300 rounded-[5px] bg-grey-0 shadow-sm w-full h-32"
+					className="py-[0.8rem] px-[1.2rem] max-w-[20rem] border-[1px] border-grey-300 rounded-[5px] bg-grey-0 shadow-sm w-full h-32"
 				/>
 			</div>
 
@@ -85,17 +89,17 @@ function CreateCabinForm() {
 					Cabin photo
 				</label>
 				<input
-					type="image"
+					type="file"
 					id="image"
 					accept="image/*"
-					className="input-btn text-[1.4rem] rounded-sm"
+					className="input-btn text-[1.4rem] rounded-sm text-sm"
 				/>
 			</div>
 
 			<div className="form-row">
 				{/* type is an HTML attribute! */}
 				<Button color="secondary" /* type="reset" */>Cancel</Button>
-				<Button size="small" color="secondary">
+				<Button size="medium" color="primary">
 					Edit cabin
 				</Button>
 			</div>

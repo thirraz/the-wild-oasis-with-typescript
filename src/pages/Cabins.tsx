@@ -1,14 +1,11 @@
 import Row from "../ui/Row"
 import CabinTable from "../features/cabins/CabinTable"
+import { Button } from "../ui/Button"
+import { useState } from "react"
+import CreateCabinForm from "../features/cabins/CreateCabinForm"
 
 function Cabins() {
-	// useEffect(() => {
-	// 	// (async () => {
-	// 	// 	const data = await getCabins()
-	// 	// 	console.log(data)
-	// 	// })()
-	// 	getCabins().then(data => console.log(data))
-	// }, [])
+	const [showForm, setShowForm] = useState(false)
 
 	return (
 		<div className="space-y-8">
@@ -19,6 +16,12 @@ function Cabins() {
 
 			<Row>
 				<CabinTable />
+
+				<Button onClick={() => setShowForm(show => !show)}>
+					Add new cabin
+				</Button>
+
+				{showForm && <CreateCabinForm />}
 			</Row>
 		</div>
 	)
