@@ -1,11 +1,11 @@
 import { useForm } from "react-hook-form"
-import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { createEditCabin } from "../../services/apiCabins"
-import toast from "react-hot-toast"
 
 import Form from "../../ui/Form"
 import { Button } from "../../ui/Button"
 import FormRow from "../../ui/FormRow"
+
+import { useCreateCabin } from "./useCreateCabin"
+import { useEditCabin } from "./useEditCabin"
 
 export type CreateCabinFields = {
 	name: string
@@ -16,7 +16,7 @@ export type CreateCabinFields = {
 	image: any
 }
 
-type EditCabinParams = {
+export type EditCabinParams = {
 	newCabinData: any
 	id: any
 }
@@ -27,11 +27,14 @@ type Props = {
 		| Record<string, never> // <= {}
 }
 function CreateCabinForm({ cabinToEdit = {} }: Props) {
+	const { isCreating, createCabin } = useCreateCabin()
+	const { isEditing, editCabin } = useEditCabin()
+
+	const isWorking = isCreating || isEditing
+
 	const { id: editId, ...editValues } = cabinToEdit
 	// const isEditSession = Boolean(editId)
-	const isEditSession = Boolean(cabinToEdit?.id)
-
-	const queryClient = useQueryClient()
+	const isEditSession = Boolean(editId)
 
 	const { register, handleSubmit, reset, formState } =
 		useForm<CreateCabinFields>({
@@ -40,33 +43,6 @@ function CreateCabinForm({ cabinToEdit = {} }: Props) {
 
 	const { errors } = formState
 
-	const { mutate: createCabin, isPending: isCreating } = useMutation({
-		mutationFn: createEditCabin,
-		onSuccess: () => {
-			queryClient.invalidateQueries({
-				queryKey: ["cabins"]
-			})
-			toast.success("Cabin created!")
-			reset()
-		},
-		onError: err => toast.error(err.message)
-	})
-
-	const { mutate: editCabin, isPending: isEditing } = useMutation({
-		mutationFn: ({ newCabinData, id }: EditCabinParams) =>
-			createEditCabin(newCabinData, id),
-		onSuccess: () => {
-			queryClient.invalidateQueries({
-				queryKey: ["cabins"]
-			})
-			toast.success("Cabin edited!")
-			reset()
-		},
-		onError: err => toast.error(err.message)
-	})
-
-	const isWorking = isCreating || isEditing
-
 	function onSubmit(data: any) {
 		const image =
 			typeof data.image === "object" && data.image.length > 0
@@ -74,11 +50,20 @@ function CreateCabinForm({ cabinToEdit = {} }: Props) {
 				: cabinToEdit.image
 
 		if (isEditSession) {
-			editCabin({
-				newCabinData: { ...data, image },
-				id: editId
-			})
-		} else createCabin({ ...data, image })
+			editCabin(
+				{
+					newCabinData: { ...data, image },
+					id: editId
+				},
+				{ onSuccess: () => reset() }
+			)
+		} else
+			createCabin(
+				{ ...data, image },
+				{
+					onSuccess: () => reset()
+				}
+			)
 	}
 
 	function onError(errors: any) {

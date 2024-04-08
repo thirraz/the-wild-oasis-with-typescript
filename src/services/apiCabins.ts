@@ -1,13 +1,13 @@
 import supabase, { supabaseUrl } from "./supabase"
 
-// type DBFields = {
-// 	name: string
-// 	maxCapacity: number
-// 	regularPrice: number
-// 	discount: number
-// 	description: string
-// 	image: any
-// }
+type DBFields = {
+	name: string
+	maxCapacity: number
+	regularPrice: number
+	discount: number
+	description: string
+	image: any
+}
 
 export async function getCabins() {
 	const { data, error } = await supabase.from("cabins").select("*")
@@ -17,7 +17,7 @@ export async function getCabins() {
 	return data
 }
 
-export async function createEditCabin(newCabin: any, id?: any) {
+export async function createEditCabin(newCabin: DBFields, id?: any) {
 	const hasImgPath = newCabin.image?.startsWith?.(supabaseUrl)
 
 	const imgName = `${Math.random()}-${newCabin.image.name}`.replaceAll("/", "")
@@ -52,7 +52,6 @@ export async function createEditCabin(newCabin: any, id?: any) {
 		//@ts-ignore
 		await supabase.from("cabins").delete().eq("id", data.id).select()
 
-	// console.log(newCabin, id, "pinto")
 	return data
 }
 
