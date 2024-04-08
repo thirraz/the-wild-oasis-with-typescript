@@ -42,6 +42,8 @@ import { Button } from "../../ui/Button"
 import { formatCurrency } from "../../utils/helpers"
 import { deleteCabins } from "../../services/apiCabins"
 import toast from "react-hot-toast"
+import { useState } from "react"
+import CreateCabinForm from "./CreateCabinForm"
 
 type Props = {
 	cabin: any
@@ -56,6 +58,8 @@ export default function CabinRow({ cabin }: Props) {
 		discount,
 		image
 	} = cabin
+
+	const [showForm, setShowForm] = useState(false)
 
 	const queryClient = useQueryClient()
 
@@ -72,35 +76,49 @@ export default function CabinRow({ cabin }: Props) {
 	})
 
 	return (
-		<div className="grid [grid-template-columns:0.6fr_1.8fr_2.2fr_repeat(3,1fr)] gap-[2.4rem] items-center py-[1rem] px-[1.2rem] ">
-			{/* If doesn't an image, replace by a <div> with a border */}
-			{image ? (
-				<img
-					src={image}
-					className="block max-w-[7rem] max-h-full aspect-[3/2] object-cover object-center translate-x-[-7px]"
-				/>
-			) : (
-				<div className="border-[1px] border-grey-300 block max-w-[7rem] w-[7rem] max-h-full aspect-[3/2] object-cover object-center translate-x-[-7px]" />
-			)}
+		<>
+			<div className="grid [grid-template-columns:0.6fr_1.8fr_2.2fr_repeat(3,1fr)] gap-[2.4rem] items-center py-[1rem] px-[1.2rem] ">
+				{/* If doesn't an image, replace by a <div> with a border */}
+				{image ? (
+					<img
+						src={image}
+						className="block max-w-[7rem] max-h-full aspect-[3/2] object-cover object-center translate-x-[-7px]"
+					/>
+				) : (
+					<div className="border-[1px] border-grey-300 block max-w-[7rem] w-[7rem] max-h-full aspect-[3/2] object-cover object-center translate-x-[-7px]" />
+				)}
 
-			<span className="block font-sono font-bold text-grey-600">{name}</span>
+				<span className="block font-sono font-bold text-grey-600">
+					{name}
+				</span>
 
-			<div>Fits up to {maxCapacity} guests</div>
+				<div>Fits up to {maxCapacity} guests</div>
 
-			<div className="font-sono font-bold">
-				{formatCurrency(regularPrice)}
+				<div className="font-sono font-bold">
+					{formatCurrency(regularPrice)}
+				</div>
+				<div className="font-sono font-bold text-green-700">
+					{formatCurrency(discount)}
+				</div>
+				<div>
+					<Button
+						onClick={() => setShowForm(show => !show)}
+						size="small"
+						color="secondary"
+					>
+						Edit
+					</Button>
+					<Button
+						onClick={() => mutate(cabinId)}
+						disabled={isDeleting}
+						size="small"
+						color="primary"
+					>
+						Delete
+					</Button>
+				</div>
 			</div>
-			<div className="font-sono font-bold text-green-700">
-				{formatCurrency(discount)}
-			</div>
-			<Button
-				onClick={() => mutate(cabinId)}
-				disabled={isDeleting}
-				size="small"
-				color="secondary"
-			>
-				Delete
-			</Button>
-		</div>
+			{showForm && <CreateCabinForm cabinToEdit={cabin} />}
+		</>
 	)
 }

@@ -1,13 +1,13 @@
 import supabase, { supabaseUrl } from "./supabase"
 
-type DBFields = {
-	name: string
-	maxCapacity: number
-	regularPrice: number
-	discount: number
-	description: string
-	image: any
-}
+// type DBFields = {
+// 	name: string
+// 	maxCapacity: number
+// 	regularPrice: number
+// 	discount: number
+// 	description: string
+// 	image: any
+// }
 
 export async function getCabins() {
 	const { data, error } = await supabase.from("cabins").select("*")
@@ -17,19 +17,31 @@ export async function getCabins() {
 	return data
 }
 
-export async function createCabins(newCabin: DBFields) {
-	// https://gbcksxbxabufcuobfztg.supabase.co/storage/v1/object/public/cabin-images/cabin-001.jpg
+export async function createEditCabin(newCabin: any, id?: any) {
+	const hasImgPath = newCabin.image?.startsWith?.(supabaseUrl)
+
 	const imgName = `${Math.random()}-${newCabin.image.name}`.replaceAll("/", "")
 
-	const imgPath = `${supabaseUrl}/storage/v1/object/public/cabin-images/${imgName}`
+	const imgPath = hasImgPath
+		? newCabin.image
+		: `${supabaseUrl}/storage/v1/object/public/cabin-images/${imgName}`
 
 	// 1. Create cabin
-	const { data, error } = await supabase
-		.from("cabins")
-		.insert([{ ...newCabin, image: imgPath }])
-		.select()
+	let query: any = supabase.from("cabins")
 
-	if (error) throw new Error(`This cabin can't be created: ${error.message}`)
+	// A) CREATE
+	if (!id) query = query.insert([{ ...newCabin, image: imgPath }])
+
+	// B) EDIT
+	if (id) query = query.update({ ...newCabin, image: imgPath }).eq("id", id)
+
+	// const { data, error } = await query.select().single()
+	const { data, error } = await query.select().maybeSingle()
+
+	if (error) {
+		console.log(error)
+		throw new Error(`This cabin can't be created: ${error.message}`)
+	}
 
 	// 2. Upload image
 	const { error: storageError } = await supabase.storage
@@ -38,8 +50,9 @@ export async function createCabins(newCabin: DBFields) {
 
 	if (storageError)
 		//@ts-ignore
-		await supabase.from("cabins").delete().eq("id", data.id)
+		await supabase.from("cabins").delete().eq("id", data.id).select()
 
+	// console.log(newCabin, id, "pinto")
 	return data
 }
 
