@@ -5,7 +5,7 @@ import { Button } from "../../ui/Button"
 import FormRow from "../../ui/FormRow"
 
 import { useCreateCabin } from "./useCreateCabin"
-import { useEditCabin } from "./useEditCabin"
+import { useUpdateCabin } from "./useUpdateCabin"
 
 export type CreateCabinFields = {
 	name: string
@@ -16,7 +16,7 @@ export type CreateCabinFields = {
 	image: any
 }
 
-export type EditCabinParams = {
+export type UpdateCabinParams = {
 	newCabinData: any
 	id: any
 }
@@ -28,9 +28,9 @@ type Props = {
 }
 function CreateCabinForm({ cabinToEdit = {} }: Props) {
 	const { isCreating, createCabin } = useCreateCabin()
-	const { isEditing, editCabin } = useEditCabin()
+	const { isUpdating, updateCabin } = useUpdateCabin()
 
-	const isWorking = isCreating || isEditing
+	const isWorking = isCreating || isUpdating
 
 	const { id: editId, ...editValues } = cabinToEdit
 	// const isEditSession = Boolean(editId)
@@ -50,7 +50,7 @@ function CreateCabinForm({ cabinToEdit = {} }: Props) {
 				: cabinToEdit.image
 
 		if (isEditSession) {
-			editCabin(
+			updateCabin(
 				{
 					newCabinData: { ...data, image },
 					id: editId
