@@ -2,6 +2,7 @@ import Form from "../../ui/Form"
 import FormRow from "../../ui/FormRow"
 import Spinner from "../../ui/Spinner"
 import { useSettings } from "./useSettings"
+import { useUpdateSetting } from "./useUpdateSetting"
 
 function UpdateSettingsForm() {
 	const {
@@ -13,8 +14,20 @@ function UpdateSettingsForm() {
 			breakfastPrice
 		} = {}
 	} = useSettings()
+	const { isUpdating, updateSetting } = useUpdateSetting()
 
 	if (isPending) return <Spinner />
+
+	function handleUpdate(
+		e: React.FocusEvent<HTMLInputElement, Element>,
+		fieldName: string
+	) {
+		const { value } = e.target
+
+		if (!value) return
+
+		updateSetting({ [fieldName]: value })
+	}
 
 	return (
 		<Form>
@@ -24,6 +37,8 @@ function UpdateSettingsForm() {
 					id="min-nights"
 					defaultValue={minBookingLength}
 					className="input"
+					onBlur={e => handleUpdate(e, "minBookingLength")}
+					disabled={isUpdating}
 				/>
 			</FormRow>
 
@@ -33,6 +48,8 @@ function UpdateSettingsForm() {
 					id="max-nights"
 					defaultValue={maxBookingLength}
 					className="input"
+					onBlur={e => handleUpdate(e, "maxBookingLength")}
+					disabled={isUpdating}
 				/>
 			</FormRow>
 
@@ -42,6 +59,8 @@ function UpdateSettingsForm() {
 					id="max-guests"
 					defaultValue={maxGuestsPerBooking}
 					className="input"
+					onBlur={e => handleUpdate(e, "maxGuestsPerBooking")}
+					disabled={isUpdating}
 				/>
 			</FormRow>
 
@@ -51,6 +70,8 @@ function UpdateSettingsForm() {
 					id="breakfast-price"
 					defaultValue={breakfastPrice}
 					className="input"
+					onBlur={e => handleUpdate(e, "breakfastPrice")}
+					disabled={isUpdating}
 				/>
 			</FormRow>
 		</Form>
