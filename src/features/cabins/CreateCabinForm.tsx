@@ -49,7 +49,7 @@ export type CreateCabinFields = {
 	regularPrice: number
 	discount: number
 	description: string
-	image?: string
+	image: any
 }
 
 function CreateCabinForm() {
@@ -73,7 +73,8 @@ function CreateCabinForm() {
 	})
 
 	function onSubmit(data: CreateCabinFields) {
-		mutate(data)
+		mutate({ ...data, image: data.image[0] })
+		console.log(data.image[0].name)
 	}
 
 	function onError(errors: any) {
@@ -180,8 +181,9 @@ function CreateCabinForm() {
 					type="file"
 					id="image"
 					disabled={isCreating}
-					accept="image/*"
+					accept="image/jpg"
 					className="max-w-[17rem] input-btn text-[1.4rem] rounded-sm text-sm"
+					{...register("image", { required: "This field is required" })}
 				/>
 			</FormRow>
 
