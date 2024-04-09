@@ -71,7 +71,7 @@ function CreateCabinForm({ cabinToEdit = {} }: Props) {
 	}
 
 	return (
-		<Form onSubmit={handleSubmit(onSubmit, onError)}>
+		<Form onSubmit={handleSubmit(onSubmit, onError)} type="modal">
 			<FormRow
 				label="Cabin name"
 				errorMessage={errors?.name?.message}
@@ -159,7 +159,7 @@ function CreateCabinForm({ cabinToEdit = {} }: Props) {
 				<textarea
 					id="description"
 					disabled={isWorking}
-					className="py-[0.8rem] px-[1.2rem] max-w-[17] w-[17rem] border-[1px] border-grey-300 rounded-[5px] bg-grey-0 shadow-sm h-32"
+					className="py-[0.8rem] px-[1.2rem] max-w-[17] w-[17rem] border border-grey-300 rounded-[5px] bg-grey-0 shadow-sm h-32"
 					{...register("description", {
 						required: "This field is required"
 					})}

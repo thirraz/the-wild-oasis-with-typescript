@@ -13,7 +13,7 @@ const button = tv({
 		color: {
 			primary: "text-brand-50 bg-brand-600 hover:bg-brand-700",
 			secondary:
-				"text-grey-600 bg-grey-0 border-[1px] border-grey-200 hover:bg-grey-200",
+				"text-grey-600 bg-grey-0 border border-grey-200 hover:bg-grey-200",
 			danger: "text-red-100 bg-red-700 hover:bg-red-800"
 		}
 	},

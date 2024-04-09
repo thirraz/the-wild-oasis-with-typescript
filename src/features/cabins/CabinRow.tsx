@@ -46,7 +46,7 @@ export default function CabinRow({ cabin }: Props) {
 						className="block max-w-[7rem] max-h-full aspect-[3/2] object-cover object-center translate-x-[-7px]"
 					/>
 				) : (
-					<div className="border-[1px] border-grey-300 block max-w-[7rem] w-[7rem] max-h-full aspect-[3/2] object-cover object-center translate-x-[-7px]" />
+					<div className="border border-grey-300 block max-w-[7rem] w-[7rem] max-h-full aspect-[3/2] object-cover object-center translate-x-[-7px]" />
 				)}
 
 				<span className="block font-sono font-bold text-grey-600">

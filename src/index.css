@@ -31,7 +31,7 @@
 	}
 
 	.input {
-		@apply max-w-[17] w-[17rem] border-[1px] border-grey-300 bg-grey-0 rounded-sm py-[0.8rem] px-[1.2rem] shadow-sm;
+		@apply max-w-[17] w-[17rem] border border-grey-300 bg-grey-0 rounded-sm py-[0.8rem] px-[1.2rem] shadow-sm;
 	}
 }
 
