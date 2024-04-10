@@ -55,10 +55,11 @@ function Window({ children, name }: WindowProps) {
 	if (name !== openName) return null
 
 	return createPortal(
-		<div className="fixed top-0 left-0 w-full h-[100dvh] bg-backdrop-color backdrop-blur-sm z-[1000] transition-all">
+		<div className="fixed top-0 left-0 w-full h-[100dvh] bg-backdrop-color backdrop-blur-sm z-[1000] transition-all ">
 			<div
+				data-delete
 				ref={ref}
-				className="max-w-[40rem] w-[40rem] fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-grey-0 rounded-lg shadow-lg py-[3.2rem] px-16 transition-all max-h-[90dvh] overflow-y-scroll"
+				className="max-w-[40rem] w-[40rem] fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-grey-0 rounded-lg shadow-lg py-[3.2rem] px-16 transition-all max-h-[90dvh] overflow-y-scroll [data-delete=true]:hidden"
 			>
 				<button
 					onClick={close}
