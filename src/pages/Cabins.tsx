@@ -1,6 +1,6 @@
 import Row from "../ui/Row"
 import CabinTable from "../features/cabins/CabinTable"
-import AddCabin from "./AddCabin"
+import AddCabin from "../features/cabins/AddCabin"
 
 function Cabins() {
 	return (
@@ -12,14 +12,13 @@ function Cabins() {
 
 			<Row>
 				<CabinTable />
+				<AddCabin />
 
 				{/* <Button onClick={() => setShowForm(show => !show)}>
 					Add new cabin
 				</Button> 
 
 				{showForm && <CreateCabinForm />} */}
-
-				<AddCabin />
 			</Row>
 		</div>
 	)

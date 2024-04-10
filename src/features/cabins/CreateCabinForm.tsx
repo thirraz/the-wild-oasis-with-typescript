@@ -25,8 +25,10 @@ type Props = {
 	cabinToEdit?:
 		| (CreateCabinFields & { id: string | number })
 		| Record<string, never> // <= {}
+
+	onCloseModal?: () => void
 }
-function CreateCabinForm({ cabinToEdit = {} }: Props) {
+function CreateCabinForm({ onCloseModal, cabinToEdit = {} }: Props) {
 	const { isCreating, createCabin } = useCreateCabin()
 	const { isUpdating, updateCabin } = useUpdateCabin()
 
@@ -55,13 +57,21 @@ function CreateCabinForm({ cabinToEdit = {} }: Props) {
 					newCabinData: { ...data, image },
 					id: editId
 				},
-				{ onSuccess: () => reset() }
+				{
+					onSuccess: () => {
+						reset()
+						onCloseModal?.()
+					}
+				}
 			)
 		} else
 			createCabin(
 				{ ...data, image },
 				{
-					onSuccess: () => reset()
+					onSuccess: () => {
+						reset()
+						onCloseModal?.()
+					}
 				}
 			)
 	}
@@ -71,7 +81,10 @@ function CreateCabinForm({ cabinToEdit = {} }: Props) {
 	}
 
 	return (
-		<Form onSubmit={handleSubmit(onSubmit, onError)} type="modal">
+		<Form
+			onSubmit={handleSubmit(onSubmit, onError)}
+			type={onCloseModal && "modal"}
+		>
 			<FormRow
 				label="Cabin name"
 				errorMessage={errors?.name?.message}
@@ -181,7 +194,12 @@ function CreateCabinForm({ cabinToEdit = {} }: Props) {
 
 			<div className="flex gap-[1rem] text-sm justify-end mt-6">
 				{/* type is an HTML attribute! */}
-				<Button color="secondary" /* type="reset" */>Cancel</Button>
+				<Button
+					onClick={() => onCloseModal?.()}
+					color="secondary" /* type="reset" */
+				>
+					Cancel
+				</Button>
 				<Button size="medium" color="primary" disabled={isWorking}>
 					{isEditSession ? "Edit cabin" : "Create new cabin"}
 				</Button>
