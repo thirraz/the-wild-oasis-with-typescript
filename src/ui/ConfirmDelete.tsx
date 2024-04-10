@@ -3,8 +3,8 @@ import { Button } from "./Button"
 type Props = {
 	resourceName: string
 	disabled: boolean
-	onConfirm: () => void
-	onCloseModal: () => void
+	onConfirm?: () => void
+	onCloseModal?: () => void
 }
 
 export function ConfirmDelete({

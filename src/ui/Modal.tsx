@@ -6,6 +6,7 @@ import { useOutsideClick } from "../hooks/useOutsideClick"
 type WindowProps = {
 	name?: string
 	children: React.ReactElement
+	deleteModal?: boolean
 }
 
 type ContextProperties = {
@@ -48,7 +49,7 @@ function Open({ children, openWindowName }: OpenProps) {
 }
 
 // Modal.Window
-function Window({ children, name }: WindowProps) {
+function Window({ children, name, deleteModal }: WindowProps) {
 	const { openName, close } = useContext(ModalContext)
 	const ref = useOutsideClick(close)
 
@@ -57,9 +58,9 @@ function Window({ children, name }: WindowProps) {
 	return createPortal(
 		<div className="fixed top-0 left-0 w-full h-[100dvh] bg-backdrop-color backdrop-blur-sm z-[1000] transition-all ">
 			<div
-				data-delete
 				ref={ref}
-				className="max-w-[40rem] w-[40rem] fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-grey-0 rounded-lg shadow-lg py-[3.2rem] px-16 transition-all max-h-[90dvh] overflow-y-scroll [data-delete=true]:hidden"
+				data-delete-modal={deleteModal}
+				className="max-w-[40rem] w-[40rem] fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-grey-0 rounded-lg shadow-lg py-[3.2rem] px-16 transition-all max-h-[90dvh] overflow-y-scroll data-[delete-modal=true]:overflow-y-hidden"
 			>
 				<button
 					onClick={close}

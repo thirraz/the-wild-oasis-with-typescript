@@ -43,7 +43,3 @@
 	background-color: #4f46e5;
 	color: #eef2ff;
 }
-
-[data-delete="true"] {
-	overflow: hidden;
-}

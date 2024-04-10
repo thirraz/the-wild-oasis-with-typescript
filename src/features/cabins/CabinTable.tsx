@@ -1,4 +1,5 @@
 import Spinner from "../../ui/Spinner"
+import Table from "../../ui/Table"
 import CabinRow from "./CabinRow"
 import { useFetchCabins } from "./useFetchCabins"
 
@@ -13,17 +14,19 @@ export default function CabinTable() {
 	if (isFetching) return <Spinner />
 
 	return (
-		<div className="border border-grey-200 text-sm bg-grey-0 rounded-md overflow-hidden">
-			<header className="grid [grid-template-columns:1fr_1.8fr_2.2fr_repeat(3,1fr)] gap-[2.4rem] items-center bg-grey-50 border-b-[1px] border-grey-100 uppercase tracking-[0.4px] font-bold text-grey-600 py-[1rem] px-[1.2rem] ">
+		<Table columns="1fr_1.8fr_2.2fr_repeat(3,1fr)">
+			<Table.Head>
 				<div />
 				<div>Cabin</div>
 				<div>Capacity</div>
 				<div>Price</div>
 				<div>Discount</div>
 				<div />
-			</header>
-			{cabins &&
-				cabins.map(cabin => <CabinRow cabin={cabin} key={cabin.id} />)}
-		</div>
+			</Table.Head>
+			<Table.Body
+				data={cabins}
+				render={(cabin: any[], i) => <CabinRow cabin={cabin} key={i} />}
+			/>
+		</Table>
 	)
 }
