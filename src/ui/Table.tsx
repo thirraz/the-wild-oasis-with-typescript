@@ -41,7 +41,7 @@ function Row({ children }: Props) {
 	const { columns } = useContext(TableContext)
 	return (
 		<div
-			className={`grid ${columns} gap-x-[2.4rem] items-center transition-none py-[.7rem] px-[1.8rem] [&:not:last-child]:border-b-grey-100`}
+			className={`pb-10 border-b border-grey-200 grid ${columns} gap-x-[2.4rem] items-center transition-none py-[.7rem] px-[1.8rem] last:border-none`}
 		>
 			{children}
 		</div>

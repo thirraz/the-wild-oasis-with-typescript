@@ -63,7 +63,7 @@ export default function CabinRow({ cabin }: Props) {
 				{discount ? formatCurrency(discount) : <span>&mdash;</span>}
 			</div>
 
-			<div className="flex flex-col items-center gap-4">
+			<div className="flex flex-col items-center gap-2">
 				<Button
 					onClick={handleDuplicate}
 					disabled={isDuplicating}
