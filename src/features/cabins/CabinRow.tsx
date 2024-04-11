@@ -2,11 +2,12 @@ import { Button } from "../../ui/Button"
 import { formatCurrency } from "../../utils/helpers"
 import CreateCabinForm from "./CreateCabinForm"
 import { useDeleteCabin } from "./useDeleteCabin"
-import { HiPencil, HiSquare2Stack, HiTrash } from "react-icons/hi2"
+import { HiPencil, HiTrash } from "react-icons/hi2"
 import { useCreateCabin } from "./useCreateCabin"
 import { Modal } from "../../ui/Modal"
 import ConfirmDelete from "../../ui/ConfirmDelete"
 import Table from "../../ui/Table"
+import { HiDuplicate } from "react-icons/hi"
 
 type Props = {
 	cabin: any
@@ -69,7 +70,7 @@ export default function CabinRow({ cabin }: Props) {
 					size="small"
 					color="secondary"
 				>
-					<HiSquare2Stack className="mx-auto text-lg" />
+					<HiDuplicate className="mx-auto text-lg" />
 				</Button>
 
 				<Modal>
