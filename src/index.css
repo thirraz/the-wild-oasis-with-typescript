@@ -33,6 +33,10 @@
 	.input {
 		@apply max-w-[17] w-[17rem] border border-grey-300 bg-grey-0 rounded-sm py-[0.8rem] px-[1.2rem] shadow-sm;
 	}
+
+	.filter-btn {
+		@apply bg-grey-0 data-[btn-active=true]:bg-brand-600 text-brand-50 rounded-sm font-semibold text-sm py-[0.44rem] px-[0.8rem] transition-all [&:hover:not(:disabled)]:bg-brand-600 [&:hover:not(:disabled)]:text-brand-50;
+	}
 }
 
 .input-btn::file-selector-button:hover {
