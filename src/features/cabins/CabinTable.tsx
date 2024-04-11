@@ -15,18 +15,32 @@ export default function CabinTable() {
 
 	if (isFetching) return <Spinner />
 
+	// 1) FILTER
 	const filterValue = searchParams.get("discount") || "all"
-
 	let filteredCabins
-	if (filterValue === "all") filteredCabins = cabins
-	if (filterValue === "no-discount") {
-		filteredCabins = cabins?.filter(cabin => cabin.discount === 0)
-		console.log(filteredCabins)
+
+	switch (filterValue) {
+		case "all":
+			filteredCabins = cabins
+			break
+		case "no-discount":
+			filteredCabins = cabins?.filter(cabin => cabin.discount === 0)
+			break
+		case "with-discount":
+			filteredCabins = cabins?.filter(cabin => cabin.discount > 0)
+			break
+
+		default:
+			throw new Error("Some error occurred on filter")
 	}
-	if (filterValue === "with-discount") {
-		filteredCabins = cabins?.filter(cabin => cabin.discount > 0)
-		console.log(filteredCabins)
-	}
+
+	// 2) SORT
+	const sortBy = searchParams.get("sortBy") || "startDate-asc"
+	const [field, direction] = sortBy.split("-")
+	const modifier = direction === "asc" ? 1 : -1
+	const sortedCabins = filteredCabins?.sort(
+		(a, b) => (a[field] - b[field]) * modifier
+	)
 
 	return (
 		<Table columns="[grid-template-columns:2fr_1.8fr_2.2fr_repeat(3,1fr)]">
@@ -40,7 +54,7 @@ export default function CabinTable() {
 			</Table.Head>
 
 			<Table.Body
-				data={filteredCabins}
+				data={sortedCabins}
 				render={(cabin: any[], i) => <CabinRow cabin={cabin} key={i} />}
 			/>
 		</Table>

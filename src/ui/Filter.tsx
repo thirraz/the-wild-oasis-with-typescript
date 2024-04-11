@@ -1,13 +1,14 @@
 import { useState } from "react"
 import { useSearchParams } from "react-router-dom"
-type Options = {
+
+export type SortAndFilterOptions = {
 	value: string
 	label: string
 }
 
 type Props = {
 	filterField: string
-	options: Options[]
+	options: SortAndFilterOptions[]
 }
 
 export function Filter({ filterField, options }: Props) {
