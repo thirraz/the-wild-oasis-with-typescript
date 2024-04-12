@@ -8,7 +8,7 @@ export default function AppLayout() {
 			<Sidebar />
 			<Header />
 
-			<main className="bg-grey-50 p-[4rem_4.8rem_6.4rem] overflow-scroll">
+			<main className="bg-grey-50 p-[4rem_4.8rem_0] overflow-y-scroll overflow-x-hidden ">
 				<div className="max-w-[120rem] mx-auto">
 					<Outlet />
 				</div>

@@ -58,7 +58,7 @@ function BookingRow({
 		numGuests,
 		totalPrice,
 		status,
-		guests: { fullName: guestName, email },
+		guests: { fullName, email },
 		cabins: { name: cabinName }
 	}
 }: Props) {
@@ -66,9 +66,6 @@ function BookingRow({
 		unconfirmed: "blue",
 		"checked-in": "green",
 		"checked-out": "silver"
-	}
-	{
-		console.log(statusToTagName[status])
 	}
 
 	return (
@@ -78,7 +75,7 @@ function BookingRow({
 			</div>
 
 			<div className="flex flex-col gap-1 [&>span]:font-semibold last:text-sm last:text-grey-500">
-				<span>{guestName}</span>
+				<span>{fullName}</span>
 				<span>{email}</span>
 			</div>
 
