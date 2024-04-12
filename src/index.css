@@ -37,6 +37,10 @@
 	.filter-btn {
 		@apply bg-grey-0 data-[btn-active=true]:bg-brand-600 data-[btn-active=true]:text-grey-50 text-grey-600 rounded-sm font-semibold text-sm py-[0.44rem] px-[0.8rem] transition-all [&:hover:not(:disabled)]:bg-brand-600 [&:hover:not(:disabled)]:text-brand-50;
 	}
+
+	.pagination-btn {
+		@apply data-[btn-active=true]:bg-brand-600 data-[btn-active=true]:text-brand-50 bg-grey-50 text-grey-600 rounded-sm font-semibold text-sm flex items-center justify-center gap-1 py-2 px-4 transition-all [&:has(span:last-child)]:pl-1 [&:has(span:first-child)]:pr-1 [&>svg]:h-7 [&>svg]:w-7 [&:hover:not(:disabled)]:bg-brand-600 [&:hover:not(:disabled)]:text-brand-50;
+	}
 }
 
 .input-btn::file-selector-button:hover {

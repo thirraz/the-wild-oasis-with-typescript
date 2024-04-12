@@ -61,6 +61,15 @@ function Body({ data, render }: TableBodyProps) {
 	)
 }
 
+function Footer({ children }: { children: React.ReactNode }) {
+	return (
+		<footer className="bg-grey-50 flex justify-center p-4 [&:not(:has(*))]:hidden">
+			{children}
+		</footer>
+	)
+}
+
 Table.Head = Head
 Table.Row = Row
 Table.Body = Body
+Table.Footer = Footer

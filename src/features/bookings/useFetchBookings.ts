@@ -17,10 +17,16 @@ export function useFetchBookings() {
 	const [field, direction] = sortByRaw.split("-")
 	const sortBy = { field, direction }
 
-	const { isPending: isFetching, data: bookings } = useQuery({
-		queryKey: ["bookings", filter, sortBy],
-		queryFn: () => getAllBookings({ filter, sortBy })
+	const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"))
+
+	const {
+		isPending: isFetching,
+		data: { data: bookings, count } = { data: {}, count: 0 },
+		error
+	}: any = useQuery({
+		queryKey: ["bookings", filter, sortBy, page],
+		queryFn: () => getAllBookings({ filter, sortBy, page })
 	})
 
-	return { isFetching, bookings }
+	return { isFetching, error, bookings, count }
 }
