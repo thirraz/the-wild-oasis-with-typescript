@@ -91,7 +91,7 @@ function BookingDataBox({ booking }: Props) {
 
 				<div
 					data-is-paid={isPaid}
-					className="flex items-center justify-between py-5 px-11 rounded-sm mt-9 text-yellow-100 bg-yellow-700 data-[is-paid=true]:bg-green-100 data-[is-paid=true]:text-green-700 "
+					className="flex items-center justify-between py-5 px-11 rounded-sm mt-9 text-yellow-700 bg-yellow-100 data-[is-paid=true]:bg-green-100 data-[is-paid=true]:text-green-700 "
 				>
 					<DataItem
 						icon={<HiOutlineCurrencyDollar />}

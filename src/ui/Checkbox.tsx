@@ -25,7 +25,7 @@ export function Checkbox({
 				className="w-4 h-4 outline-offset-2 origin-[0] accent-brand-600"
 			/>
 			<label
-				className="flex-[1] flex items-center gap-[0.8rem]"
+				className="flex-1 flex items-center gap-[0.8rem]"
 				htmlFor={!disabled ? id : ""}
 			>
 				{children}

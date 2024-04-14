@@ -16,16 +16,5 @@ function DataItem({ icon, label, children }: Props) {
 	)
 }
 
-// function DataItem({ icon, label, children }: Props) {
-// 	return (
-// 		<StyledDataItem>
-// 			<Label>
-// 				{icon}
-// 				<span>{label}</span>
-// 			</Label>
-// 			{children}
-// 		</StyledDataItem>
-// 	)
-// }
 
 export default DataItem

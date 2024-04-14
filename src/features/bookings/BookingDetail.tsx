@@ -10,7 +10,7 @@ import Spinner from "../../ui/Spinner"
 import { useFetchBooking } from "./useFetchBooking"
 
 function BookingDetail() {
-	const { bookingId, booking, isLoading: isFetching } = useFetchBooking()
+	const { bookingId, booking, isPending: isFetching } = useFetchBooking()
 
 	const navigate = useNavigate()
 	const status = "checked-in"
