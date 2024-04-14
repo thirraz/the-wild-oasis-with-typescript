@@ -1,52 +1,58 @@
-import styled from "styled-components";
+import BookingDataBox from "./BookingDataBox"
+import Row from "../../ui/Row"
+import Tag from "../../ui/Tag"
+import { Button } from "../../ui/Button"
+import ButtonText from "../../ui/ButtonText"
 
-import BookingDataBox from "./BookingDataBox";
-import Row from "../../ui/Row";
-import Heading from "../../ui/Heading";
-import Tag from "../../ui/Tag";
-import ButtonGroup from "../../ui/ButtonGroup";
-import Button from "../../ui/Button";
-import ButtonText from "../../ui/ButtonText";
-
-import { useMoveBack } from "../../hooks/useMoveBack";
-
-const HeadingGroup = styled.div`
-  display: flex;
-  gap: 2.4rem;
-  align-items: center;
-`;
+import { useMoveBack } from "../../hooks/useMoveBack"
+import { useNavigate } from "react-router-dom"
+import Spinner from "../../ui/Spinner"
+import { useFetchBooking } from "./useFetchBooking"
 
 function BookingDetail() {
-  const booking = {};
-  const status = "checked-in";
+	const { bookingId, booking, isLoading: isFetching } = useFetchBooking()
 
-  const moveBack = useMoveBack();
+	const navigate = useNavigate()
+	const status = "checked-in"
 
-  const statusToTagName = {
-    unconfirmed: "blue",
-    "checked-in": "green",
-    "checked-out": "silver",
-  };
+	const moveBack = useMoveBack()
 
-  return (
-    <>
-      <Row type="horizontal">
-        <HeadingGroup>
-          <Heading as="h1">Booking #X</Heading>
-          <Tag type={statusToTagName[status]}>{status.replace("-", " ")}</Tag>
-        </HeadingGroup>
-        <ButtonText onClick={moveBack}>&larr; Back</ButtonText>
-      </Row>
+	const statusToTagName = {
+		unconfirmed: "blue",
+		"checked-in": "green",
+		"checked-out": "silver"
+	}
 
-      <BookingDataBox booking={booking} />
+	if (isFetching) return <Spinner />
+	return (
+		<div className="space-y-4">
+			<Row direction="horizontal">
+				<div className="flex gap-7 items-center">
+					<h1 className="text-2xl">Booking #{bookingId}</h1>
+					<Tag type={statusToTagName[status]}>
+						{status.replace("-", " ")}
+					</Tag>
+				</div>
+				<ButtonText onClick={moveBack}>&larr; Back</ButtonText>
+			</Row>
 
-      <ButtonGroup>
-        <Button variation="secondary" onClick={moveBack}>
-          Back
-        </Button>
-      </ButtonGroup>
-    </>
-  );
+			{<BookingDataBox booking={booking} />}
+
+			<div className="flex gap-4 justify-end">
+				{status === "unconfirmed" && (
+					<button
+						onClick={() => navigate(`/checkin/${bookingId}`)}
+						className="flex justify-center items-center px-14 py-3 gap-4 w-full hover:bg-grey-100"
+					>
+						<span className="min-w-max">Check-in</span>
+					</button>
+				)}
+				<Button color="secondary" onClick={moveBack}>
+					Back
+				</Button>
+			</div>
+		</div>
+	)
 }
 
-export default BookingDetail;
+export default BookingDetail

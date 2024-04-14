@@ -8,6 +8,7 @@
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi2"
 import { useSearchParams } from "react-router-dom"
 import { PAGE_SIZE } from "../utils/constants"
+import { Button } from "./Button"
 
 // const P = styled.p`
 // 	font-size: 1.4rem;
@@ -97,22 +98,20 @@ export default function Pagination({ count }: Props) {
 			</p>
 
 			<div className="flex gap-[0.3rem]">
-				<button
+				<Button
 					data-btn-active={false}
 					onClick={prevPage}
 					disabled={currentPage === 1}
-					className="pagination-btn"
 				>
 					<HiChevronLeft /> <span>Previous</span>
-				</button>
-				<button
+				</Button>
+				<Button
 					data-btn-active={false}
 					onClick={nextPage}
 					disabled={currentPage === pageCount}
-					className="pagination-btn"
 				>
 					<HiChevronRight /> <span>Next</span>
-				</button>
+				</Button>
 			</div>
 		</div>
 	)

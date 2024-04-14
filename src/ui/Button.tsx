@@ -5,10 +5,10 @@ const button = tv({
 	base: "rounded-sm shadow-sm",
 	variants: {
 		size: {
-			small: "w-full grid place-content-center text-sm py-[0.4rem] px-[0.8rem] uppercase font-semibold text-center",
+			small: "disabled:bg-grey-500 disabled:text-grey-50 disabled:cursor-not-allowed w-fit flex items-center justify-center gap-4 text-sm py-[0.4rem] px-[0.8rem] uppercase font-semibold text-center",
 			medium:
-				"w-full grid place-content-center py-[1.2rem] px-[1.6rem] font-semibold",
-			large: "text-lg grid place-content-center py-[1.2rem] px-[2.4rem] font-semibold"
+				"max-h-fit disabled:bg-grey-500 disabled:text-grey-50 disabled:cursor-not-allowed w-fit flex items-center justify-center gap-4  py-[1rem] px-[1.6rem] font-semibold",
+			large: "disabled:bg-grey-500 disabled:text-grey-50 disabled:cursor-not-allowed w-fit text-lg flex items-center justify-center gap-4 py-[1.2rem] px-[2.4rem] font-semibold"
 		},
 		color: {
 			primary: "text-brand-50 bg-brand-600 hover:bg-brand-700",
@@ -29,9 +29,3 @@ type Props = ComponentProps<"button"> &
 export function Button({ color, size, className, ...props }: Props) {
 	return <button {...props} className={button({ size, color, className })} />
 }
-
-/* HOW TO USE =>
-	 <Button size="medium" color="danger">
-				Test
-	</Button>
-*/
