@@ -10,10 +10,14 @@ import Spinner from "../../ui/Spinner"
 import { useFetchBooking } from "./useFetchBooking"
 import { useCheckout } from "../check-in-out/useCheckout"
 import { HiArrowUpOnSquare } from "react-icons/hi2"
+import { Modal } from "../../ui/Modal"
+import ConfirmDelete from "../../ui/ConfirmDelete"
+import { useDeleteBooking } from "./useDeleteBooking"
 
 function BookingDetail() {
 	const { booking, isPending: isFetching } = useFetchBooking()
 	const { checkout, isCheckingOut } = useCheckout()
+	const { deleteBooking, isDeleting } = useDeleteBooking()
 
 	const navigate = useNavigate()
 
@@ -23,7 +27,7 @@ function BookingDetail() {
 
 	const { status, id: bookingId } = booking
 
-	const statusToTagName = {
+	const statusToTagName: any = {
 		unconfirmed: "blue",
 		"checked-in": "green",
 		"checked-out": "silver"
@@ -63,6 +67,24 @@ function BookingDetail() {
 						<span className="min-w-max">Check-out</span>
 					</Button>
 				)}
+
+				<Modal>
+					<Modal.Open openWindowName="delete">
+						<Button color="danger">Delete booking</Button>
+					</Modal.Open>
+					<Modal.Window name="delete">
+						<ConfirmDelete
+							resourceName="delete"
+							onConfirm={() =>
+								deleteBooking(bookingId, {
+									onSettled: () => navigate(-1)
+								})
+							}
+							disabled={isDeleting}
+						/>
+					</Modal.Window>
+				</Modal>
+
 				<Button color="secondary" onClick={moveBack}>
 					Back
 				</Button>
