@@ -15,5 +15,5 @@ export function useFetchBooking() {
 		retry: false
 	})
 
-	return { isPending, error, booking, bookingId }
+	return { isPending, error, booking }
 }

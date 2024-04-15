@@ -8,14 +8,20 @@ import { useMoveBack } from "../../hooks/useMoveBack"
 import { useNavigate } from "react-router-dom"
 import Spinner from "../../ui/Spinner"
 import { useFetchBooking } from "./useFetchBooking"
+import { useCheckout } from "../check-in-out/useCheckout"
+import { HiArrowUpOnSquare } from "react-icons/hi2"
 
 function BookingDetail() {
-	const { bookingId, booking, isPending: isFetching } = useFetchBooking()
+	const { booking, isPending: isFetching } = useFetchBooking()
+	const { checkout, isCheckingOut } = useCheckout()
 
 	const navigate = useNavigate()
-	const status = "checked-in"
 
 	const moveBack = useMoveBack()
+
+	if (isFetching) return <Spinner />
+
+	const { status, id: bookingId } = booking
 
 	const statusToTagName = {
 		unconfirmed: "blue",
@@ -23,12 +29,12 @@ function BookingDetail() {
 		"checked-out": "silver"
 	}
 
-	if (isFetching) return <Spinner />
 	return (
 		<div className="space-y-4">
 			<Row direction="horizontal">
 				<div className="flex gap-7 items-center">
 					<h1 className="text-2xl">Booking #{bookingId}</h1>
+
 					<Tag type={statusToTagName[status]}>
 						{status.replace("-", " ")}
 					</Tag>
@@ -46,6 +52,16 @@ function BookingDetail() {
 					>
 						<span className="min-w-max">Check-in</span>
 					</button>
+				)}
+
+				{status === "checked-in" && (
+					<Button
+						onClick={() => checkout(bookingId)}
+						disabled={isCheckingOut}
+					>
+						<HiArrowUpOnSquare className="text-2xl" />
+						<span className="min-w-max">Check-out</span>
+					</Button>
 				)}
 				<Button color="secondary" onClick={moveBack}>
 					Back
