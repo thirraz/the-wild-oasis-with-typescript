@@ -4,7 +4,7 @@ import { twMerge } from "tailwind-merge"
 type Props = ComponentProps<"form"> & {
 	type?: string | "modal"
 	children: React.ReactNode
-	className: string
+	className?: string
 }
 
 export function Form({ className, type, children, ...props }: Props) {

@@ -4,7 +4,7 @@ type Props = {
 	htmlFor: string
 	label: string
 	children: React.ReactNode
-	errorMessage: string
+	errorMessage: string | any
 }
 
 export default function FormRow({
