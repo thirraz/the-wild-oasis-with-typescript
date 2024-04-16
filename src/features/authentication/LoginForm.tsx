@@ -1,12 +1,21 @@
 import { useState } from "react"
 import { Button } from "../../ui/Button"
 import Form from "../../ui/Form"
+import { useLogin } from "./useLogin"
+import SpinnerMini from "../../ui/SpinnerMini"
 
 function LoginForm() {
-	const [email, setEmail] = useState("")
-	const [password, setPassword] = useState("")
+	const [email, setEmail] = useState("jonas@example.com")
+	const [password, setPassword] = useState("passpass")
+	const { login, isPending } = useLogin()
 
-	function handleSubmit() {}
+	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+		e.preventDefault()
+
+		if (!email || !password) return
+
+		login({ email, password })
+	}
 
 	return (
 		<Form
@@ -22,7 +31,8 @@ function LoginForm() {
 					autoComplete="username"
 					value={email}
 					onChange={e => setEmail(e.target.value)}
-					className="border border-grey-300 bg-grey-0 rounded-sm py-2 px-4 shadow-sm outline-brand-500"
+					className="text-sm border border-grey-300 bg-grey-0 rounded-sm py-2 px-4 shadow-sm outline-brand-500"
+					disabled={isPending}
 				/>
 			</div>
 			<div className="flex flex-col gap-2 text-lg">
@@ -33,12 +43,13 @@ function LoginForm() {
 					autoComplete="current-password"
 					value={password}
 					onChange={e => setPassword(e.target.value)}
-					className="border border-grey-300 bg-grey-0 rounded-sm py-2 px-4 shadow-sm outline-brand-500"
+					className="text-sm border border-grey-300 bg-grey-0 rounded-sm py-2 px-4 shadow-sm outline-brand-500"
+					disabled={isPending}
 				/>
 			</div>
 			<div>
-				<Button size="large" className="w-full py-4">
-					Login
+				<Button size="large" className="w-full py-4" disabled={isPending}>
+					{isPending ? <SpinnerMini /> : "Log in"}
 				</Button>
 			</div>
 		</Form>
