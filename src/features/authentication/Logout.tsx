@@ -8,7 +8,11 @@ export default function Logout() {
 
 	return (
 		<ButtonIcon disabled={isPending} onClick={() => logout()}>
-			{isPending ? <SpinnerMini /> : <HiArrowRightOnRectangle />}
+			{isPending ? (
+				<SpinnerMini />
+			) : (
+				<HiArrowRightOnRectangle className="text-brand-600 w-5 h-5" />
+			)}
 		</ButtonIcon>
 	)
 }
