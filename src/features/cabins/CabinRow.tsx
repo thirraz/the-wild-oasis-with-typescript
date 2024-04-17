@@ -1,4 +1,4 @@
-import { Button } from "../../ui/Button"
+import Button from "../../ui/Button"
 import { formatCurrency } from "../../utils/helpers"
 import CreateCabinForm from "./CreateCabinForm"
 import { useDeleteCabin } from "./useDeleteCabin"

@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Button } from "../../ui/Button"
+import Button from "../../ui/Button"
 import Form from "../../ui/Form"
 import { useLogin } from "./useLogin"
 import SpinnerMini from "../../ui/SpinnerMini"

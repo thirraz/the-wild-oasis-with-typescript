@@ -8,7 +8,7 @@
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi2"
 import { useSearchParams } from "react-router-dom"
 import { PAGE_SIZE } from "../utils/constants"
-import { Button } from "./Button"
+import Button from "./Button"
 
 // const P = styled.p`
 // 	font-size: 1.4rem;

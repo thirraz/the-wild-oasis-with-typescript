@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form"
 
 import Form from "../../ui/Form"
-import { Button } from "../../ui/Button"
+import Button from "../../ui/Button"
 import FormRow from "../../ui/FormRow"
 
 import { useCreateCabin } from "./useCreateCabin"

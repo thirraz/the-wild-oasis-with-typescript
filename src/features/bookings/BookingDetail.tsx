@@ -1,7 +1,7 @@
 import BookingDataBox from "./BookingDataBox"
 import Row from "../../ui/Row"
 import Tag from "../../ui/Tag"
-import { Button } from "../../ui/Button"
+import Button from "../../ui/Button"
 import ButtonText from "../../ui/ButtonText"
 
 import { useMoveBack } from "../../hooks/useMoveBack"

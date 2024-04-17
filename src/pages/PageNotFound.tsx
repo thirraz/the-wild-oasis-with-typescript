@@ -1,5 +1,5 @@
 import { useMoveBack } from "../hooks/useMoveBack"
-import { Button } from "../ui/Button"
+import Button from "../ui/Button"
 
 function PageNotFound() {
 	const moveBack = useMoveBack()

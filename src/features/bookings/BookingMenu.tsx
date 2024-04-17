@@ -7,7 +7,7 @@ import {
 import { useNavigate } from "react-router-dom"
 import { useCheckout } from "../check-in-out/useCheckout"
 import { Modal } from "../../ui/Modal"
-import { Button } from "../../ui/Button"
+import Button from "../../ui/Button"
 import ConfirmDelete from "../../ui/ConfirmDelete"
 import { useDeleteBooking } from "./useDeleteBooking"
 
