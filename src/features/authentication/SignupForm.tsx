@@ -2,15 +2,17 @@ import { useForm } from "react-hook-form"
 import { Button } from "../../ui/Button"
 import { Form } from "../../ui/Form"
 import FormRow from "../../ui/FormRow"
+import { useSignUp } from "./useSignUp"
 
 // Email regex: /\S+@\S+\.\S+/
 
 function SignupForm() {
-	const { register, formState, handleSubmit, getValues } = useForm()
+	const { signup, isPending } = useSignUp()
+	const { register, formState, handleSubmit, getValues, reset } = useForm()
 	const { errors } = formState
 
-	function onSubmit(data: any) {
-		console.log(data)
+	function onSubmit({ fullName, email, password }: any) {
+		signup({ fullName, email, password }, { onSettled: () => reset() })
 	}
 
 	return (
@@ -21,6 +23,7 @@ function SignupForm() {
 					type="text"
 					id="fullName"
 					{...register("fullName", { required: "This field is required" })}
+					disabled={isPending}
 				/>
 			</FormRow>
 
@@ -36,6 +39,7 @@ function SignupForm() {
 							message: "Please provide a valid e-mail"
 						}
 					})}
+					disabled={isPending}
 				/>
 			</FormRow>
 
@@ -54,6 +58,7 @@ function SignupForm() {
 							message: "Please, use at lest 8 characters"
 						}
 					})}
+					disabled={isPending}
 				/>
 			</FormRow>
 
@@ -71,6 +76,7 @@ function SignupForm() {
 							value === getValues().password ||
 							"Passwords needs to match"
 					})}
+					disabled={isPending}
 				/>
 			</FormRow>
 
