@@ -11,7 +11,7 @@ export default function Logout() {
 			{isPending ? (
 				<SpinnerMini />
 			) : (
-				<HiArrowRightOnRectangle className="text-brand-600 w-5 h-5" />
+				<HiArrowRightOnRectangle className="w-[1.4rem] h-[1.4rem]" />
 			)}
 		</ButtonIcon>
 	)
