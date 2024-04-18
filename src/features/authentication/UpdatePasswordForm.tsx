@@ -2,7 +2,6 @@ import { useForm } from "react-hook-form"
 import Button from "../../ui/Button"
 import Form from "../../ui/Form"
 import FormRow from "../../ui/FormRow"
-import Input from "../../ui/Input"
 
 import { useUpdateUser } from "./useUpdateUser"
 
@@ -12,17 +11,21 @@ function UpdatePasswordForm() {
 
 	const { updateUser, isUpdating } = useUpdateUser()
 
-	function onSubmit({ password }) {
-		updateUser({ password }, { onSuccess: reset })
+	function onSubmit({ password }: any) {
+		updateUser({ password }, { onSuccess: () => reset() })
 	}
 
 	return (
-		<Form onSubmit={handleSubmit(onSubmit)}>
+		<Form
+			onSubmit={handleSubmit(onSubmit)}
+			className="bg-grey-0 px-10 py-7 rounded-lg"
+		>
 			<FormRow
-				label="Password (min 8 characters)"
-				error={errors?.password?.message}
+				label="New password (min 8 chars)"
+				errorMessage={errors?.password?.message}
 			>
-				<Input
+				<input
+					className="input"
 					type="password"
 					id="password"
 					autoComplete="current-password"
@@ -39,9 +42,10 @@ function UpdatePasswordForm() {
 
 			<FormRow
 				label="Confirm password"
-				error={errors?.passwordConfirm?.message}
+				errorMessage={errors?.passwordConfirm?.message}
 			>
-				<Input
+				<input
+					className="input"
 					type="password"
 					autoComplete="new-password"
 					id="passwordConfirm"
@@ -53,12 +57,12 @@ function UpdatePasswordForm() {
 					})}
 				/>
 			</FormRow>
-			<FormRow>
-				<Button onClick={reset} type="reset" variation="secondary">
+			<div className="mt-7 text-sm flex gap-8 max-w-fit ml-auto">
+				<Button onClick={reset} type="reset" color="secondary">
 					Cancel
 				</Button>
 				<Button disabled={isUpdating}>Update password</Button>
-			</FormRow>
+			</div>
 		</Form>
 	)
 }

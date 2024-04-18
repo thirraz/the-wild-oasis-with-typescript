@@ -25,8 +25,6 @@
 	}
 
 	.form-row {
-		/* [grid-template-columns:18rem_1fr_1.2fr] */
-		/* @apply  text-base grid text-left [grid-template-columns:18rem_1fr_1.2fr] gap-[2.4rem] py-[1rem] first:pt-0 last:pb-0 [&:not(:last-child)]:border-b-[1px] [&:not(:last-child)]:border-b-grey-100 has-[button]:flex has-[button]:justify-end has-[button]:gap-[1.2rem]; */
 		@apply text-base flex gap-10 justify-between items-center py-[1rem] first:pt-0 last:pb-0 [&:not(:last-child)]:border-b-[1px] [&:not(:last-child)]:border-b-grey-100 has-[button]:flex has-[button]:justify-end has-[button]:gap-[1.2rem];
 	}
 

@@ -127,18 +127,19 @@ function Uploader() {
 
 	return (
 		<div
-			style={{
-				marginTop: "auto",
-				backgroundColor: "#e0e7ff",
-				padding: "8px",
-				borderRadius: "5px",
-				textAlign: "center",
-				display: "flex",
-				flexDirection: "column",
-				gap: "8px"
-			}}
+			className="mt-auto bg-[#e0e7ff] p-2 rounded-sm text-center flex flex-col justify-center items-center gap-2"
+			// style={{
+			// 	marginTop: "auto",
+			// 	backgroundColor: "#e0e7ff",
+			// 	padding: "8px",
+			// 	borderRadius: "5px",
+			// 	textAlign: "center",
+			// 	display: "flex",
+			// 	flexDirection: "column",
+			// 	gap: "8px"
+			// }}
 		>
-			<h3>SAMPLE DATA</h3>
+			<h3 className="text-lg font-semibold">SAMPLE DATA</h3>
 
 			<Button onClick={uploadAll} disabled={isLoading}>
 				Upload ALL
