@@ -20,7 +20,7 @@ function LoginForm() {
 	return (
 		<Form
 			onSubmit={handleSubmit}
-			className="space-y-6 bg-grey-0 px-16 py-16 rounded-md max-w-[40rem] w-[40rem] flex flex-col"
+			className="space-y-6 bg-grey-0 dark:bg-dark-grey-0 px-16 py-16 rounded-md max-w-[40rem] w-[40rem] flex flex-col"
 		>
 			<div className="flex flex-col gap-2 text-lg w-full">
 				<label htmlFor="email">E-email</label>
@@ -31,7 +31,7 @@ function LoginForm() {
 					autoComplete="username"
 					value={email}
 					onChange={e => setEmail(e.target.value)}
-					className="text-sm border border-grey-300 bg-grey-0 rounded-sm py-2 px-4 shadow-sm outline-brand-500"
+					className="text-sm border border-grey-300 dark:border-dark-grey-300 bg-grey-0  dark:bg-dark-grey-0 rounded-sm py-2 px-4 shadow-sm outline-brand-500"
 					disabled={isPending}
 				/>
 			</div>
@@ -43,7 +43,7 @@ function LoginForm() {
 					autoComplete="current-password"
 					value={password}
 					onChange={e => setPassword(e.target.value)}
-					className="text-sm border border-grey-300 bg-grey-0 rounded-sm py-2 px-4 shadow-sm outline-brand-500"
+					className="text-sm border border-grey-300 dark:border-dark-grey-300 bg-grey-0 dark:bg-dark-grey-0 rounded-sm py-2 px-4 shadow-sm outline-brand-500"
 					disabled={isPending}
 				/>
 			</div>

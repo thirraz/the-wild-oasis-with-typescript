@@ -48,16 +48,16 @@ function BookingRow({
 
 	return (
 		<Table.Row>
-			<div className="font-bold text-grey-600 font-sono">
+			<div className="font-bold text-grey-600 dark:text-dark-grey-600 font-sono">
 				<span>{cabinName}</span>
 			</div>
 
-			<div className="flex flex-col gap-1 [&>span]:font-semibold last:text-sm last:text-grey-500">
+			<div className="flex flex-col gap-1 [&>span]:font-semibold last:text-sm last:text-grey-500 dark:last:text-dark-grey-500">
 				<span>{fullName}</span>
 				<span>{email}</span>
 			</div>
 
-			<div className="flex flex-col gap-1 [&>span]:font-semibold last:text-sm last:text-grey-500">
+			<div className="flex flex-col gap-1 [&>span]:font-semibold last:text-sm last:text-grey-500 dark:last:text-grey-500">
 				<span>
 					{isToday(new Date(startDate))
 						? "Today"
@@ -77,7 +77,7 @@ function BookingRow({
 
 			<div className="relative grid place-items-center w-fit h-fit ">
 				<button
-					className="text-2xl py-3 px-3 hover:bg-grey-100 transition-all"
+					className="text-2xl py-3 px-3 hover:bg-grey-100 dark:hover:bg-dark-grey-100 transition-all"
 					onClick={() => setShowMenu(show => !show)}
 				>
 					<HiEllipsisVertical />

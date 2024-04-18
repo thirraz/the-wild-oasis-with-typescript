@@ -52,7 +52,7 @@ function BookingDetail() {
 				{status === "unconfirmed" && (
 					<button
 						onClick={() => navigate(`/checkin/${bookingId}`)}
-						className="flex justify-center items-center px-14 py-3 gap-4 w-full hover:bg-grey-100"
+						className="flex justify-center items-center px-14 py-3 gap-4 w-full hover:bg-grey-100 dark:hover:bg-dark-grey-100"
 					>
 						<span className="min-w-max">Check-in</span>
 					</button>

@@ -18,7 +18,7 @@ function UpdatePasswordForm() {
 	return (
 		<Form
 			onSubmit={handleSubmit(onSubmit)}
-			className="bg-grey-0 px-10 py-7 rounded-lg"
+			className="bg-grey-0 dark:bg-dark-grey-0 px-10 py-7 rounded-lg"
 		>
 			<FormRow
 				label="New password (min 8 chars)"

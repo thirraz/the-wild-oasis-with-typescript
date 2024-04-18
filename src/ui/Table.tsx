@@ -19,7 +19,7 @@ const TableContext = createContext<TypeContext>({ columns: "" })
 export default function Table({ columns, children }: Props) {
 	return (
 		<TableContext.Provider value={{ columns }}>
-			<div className="border border-grey-200 text-sm bg-grey-0 rounded-md overflow-hidden">
+			<div className="border border-grey-200 dark:border-dark-grey-200 text-sm bg-grey-0 dark:bg-dark-grey-0 rounded-md overflow-hidden">
 				{children}
 			</div>
 		</TableContext.Provider>
@@ -30,7 +30,7 @@ function Head({ children }: Props) {
 	const { columns } = useContext(TableContext)
 	return (
 		<header
-			className={`grid ${columns} gap-x-[2.4rem] items-center transition-none py-[1rem] px-[1.8rem] bg-grey-50  uppercase tracking-[0.4px] font-bold text-grey-600`}
+			className={`grid ${columns} gap-x-[2.4rem] items-center transition-none py-[1rem] px-[1.8rem] bg-grey-50 dark:bg-dark-grey-50  uppercase tracking-[0.4px] font-bold text-grey-600 dark:text-dark-grey-600`}
 		>
 			{children}
 		</header>
@@ -41,7 +41,7 @@ function Row({ children }: Props) {
 	const { columns } = useContext(TableContext)
 	return (
 		<div
-			className={`pb-10 border-b border-grey-200 grid ${columns} gap-x-[2.4rem] items-center transition-none py-[.7rem] px-[1.8rem] last:border-none`}
+			className={`pb-10 border-b border-grey-200 dark:border-dark-grey-200 grid ${columns} gap-x-[2.4rem] items-center transition-none py-[.7rem] px-[1.8rem] last:border-none`}
 		>
 			{children}
 		</div>
@@ -63,7 +63,7 @@ function Body({ data, render }: TableBodyProps) {
 
 function Footer({ children }: { children: React.ReactNode }) {
 	return (
-		<footer className="bg-grey-50 flex justify-center p-4 [&:not(:has(*))]:hidden">
+		<footer className="bg-grey-50 dark:bg-dark-grey-50 flex justify-center p-4 [&:not(:has(*))]:hidden">
 			{children}
 		</footer>
 	)

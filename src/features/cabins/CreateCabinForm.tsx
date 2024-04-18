@@ -172,7 +172,7 @@ function CreateCabinForm({ onCloseModal, cabinToEdit = {} }: Props) {
 				<textarea
 					id="description"
 					disabled={isWorking}
-					className="py-[0.8rem] px-[1.2rem] max-w-[17] w-[17rem] border border-grey-300 rounded-[5px] bg-grey-0 shadow-sm h-32"
+					className="py-[0.8rem] px-[1.2rem] max-w-[17] w-[17rem] border border-grey-300 dark:border-dark-grey-300 rounded-[5px] bg-grey-0 dark:bg-dark-grey-0 shadow-sm h-32"
 					{...register("description", {
 						required: "This field is required"
 					})}

@@ -17,7 +17,7 @@
 
 @layer components {
 	.sidebar-icon {
-		@apply w-7 h-7 text-grey-400 transition-all;
+		@apply w-7 h-7 text-grey-400 dark:text-dark-grey-400 transition-all;
 	}
 
 	.label {
@@ -25,19 +25,19 @@
 	}
 
 	.form-row {
-		@apply text-base flex gap-10 justify-between items-center py-[1rem] first:pt-0 last:pb-0 [&:not(:last-child)]:border-b-[1px] [&:not(:last-child)]:border-b-grey-100 has-[button]:flex has-[button]:justify-end has-[button]:gap-[1.2rem];
+		@apply text-base flex gap-10 justify-between items-center py-[1rem] first:pt-0 last:pb-0 [&:not(:last-child)]:border-b-[1px] [&:not(:last-child)]:border-b-grey-100 [&:not(:last-child)]:dark:border-b-dark-grey-100 has-[button]:flex has-[button]:justify-end has-[button]:gap-[1.2rem];
 	}
 
 	.input {
-		@apply max-w-[17] w-[17rem] border border-grey-300 bg-grey-0 rounded-sm py-[0.8rem] px-[1.2rem] shadow-sm;
+		@apply max-w-[17] w-[17rem] border border-grey-300 dark:border-dark-grey-300 bg-grey-0 dark:bg-dark-grey-0 rounded-sm py-[0.8rem] px-[1.2rem] shadow-sm;
 	}
 
 	.filter-btn {
-		@apply bg-grey-0 data-[btn-active=true]:bg-brand-600 data-[btn-active=true]:text-grey-50 text-grey-600 rounded-sm font-semibold text-sm py-[0.44rem] px-[0.8rem] transition-all [&:hover:not(:disabled)]:bg-brand-600 [&:hover:not(:disabled)]:text-brand-50;
+		@apply bg-grey-0  dark:bg-dark-grey-0 data-[btn-active=true]:bg-brand-600 data-[btn-active=true]:text-grey-50 data-[btn-active=true]:dark:text-dark-grey-50 text-grey-600 dark:text-dark-grey-600 rounded-sm font-semibold text-sm py-[0.44rem] px-[0.8rem] transition-all [&:hover:not(:disabled)]:bg-brand-600 [&:hover:not(:disabled)]:text-brand-50;
 	}
 
 	.pagination-btn {
-		@apply data-[btn-active=true]:bg-brand-600 data-[btn-active=true]:text-brand-50 bg-grey-50 text-grey-600 rounded-sm font-semibold text-sm flex items-center justify-center gap-1 py-2 px-4 transition-all [&:has(span:last-child)]:pl-1 [&:has(span:first-child)]:pr-1 [&>svg]:h-7 [&>svg]:w-7 [&:hover:not(:disabled)]:bg-brand-600 [&:hover:not(:disabled)]:text-brand-50;
+		@apply data-[btn-active=true]:bg-brand-600 data-[btn-active=true]:text-brand-50 bg-grey-50 dark:bg-dark-grey-50 text-grey-600 dark:text-dark-grey-600 rounded-sm font-semibold text-sm flex items-center justify-center gap-1 py-2 px-4 transition-all [&:has(span:last-child)]:pl-1 [&:has(span:first-child)]:pr-1 [&>svg]:h-7 [&>svg]:w-7 [&:hover:not(:disabled)]:bg-brand-600 [&:hover:not(:disabled)]:text-brand-50;
 	}
 }
 

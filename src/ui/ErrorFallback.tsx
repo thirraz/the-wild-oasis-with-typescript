@@ -6,7 +6,7 @@ export function ErrorFallback(props: Props) {
 	return (
 		<main
 			{...props}
-			className="h-[100dvh] bg-grey-50 flex items-center justify-center p-[4.8rem]"
+			className="h-[100dvh] bg-grey-50 dark:bg-dark-grey-50 flex items-center justify-center p-[4.8rem]"
 		/>
 	)
 }

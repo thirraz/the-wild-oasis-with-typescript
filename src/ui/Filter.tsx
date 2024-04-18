@@ -23,7 +23,7 @@ export function Filter({ filterField, options }: Props) {
 	}
 
 	return (
-		<div className="border border-grey-100 bg-grey-0 shadow-sm rounded-sm p-[0.4rem] flex gap-[0.4rem] ">
+		<div className="border border-grey-100 dark:border-dark-grey-100 bg-grey-0 dark:bg-dark-grey-0 shadow-sm rounded-sm p-[0.4rem] flex gap-[0.4rem] ">
 			{options.map(({ value, label }, i) => (
 				<button
 					data-btn-active={btnActive === i}

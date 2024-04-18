@@ -21,7 +21,7 @@ export default function FormRow({
 			<div className="flex flex-col gap-4">
 				{/* IF THERE IS SOME ERROR, WILL DISPLAY THE ERROR MESSAGE  */}
 				{errorMessage && (
-					<span className="text-sm text-red-700 self-end">
+					<span className="text-sm text-red-700 dark:text-dark-red-700 self-end">
 						{errorMessage}
 					</span>
 				)}

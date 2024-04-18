@@ -34,8 +34,8 @@ function BookingDataBox({ booking }: Props) {
 	} = booking
 
 	return (
-		<section className="bg-grey-0 border border-grey-100 rounded-md overflow-hidden">
-			<header className="flex justify-between text-grey-100 bg-brand-500 py-5 px-14 [&>svg]:h-12 [&>svg]:w-12">
+		<section className="bg-grey-0 dark:bg-dark-grey-0 border border-grey-100 dark:border-dark-grey-100 rounded-md overflow-hidden">
+			<header className="flex justify-between text-grey-100 dark:text-dark-grey-100 bg-brand-500 py-5 px-14 [&>svg]:h-12 [&>svg]:w-12">
 				<div className="flex items-center gap-5 font-bold text-lg">
 					<HiOutlineHomeModern />
 					<p>
@@ -53,8 +53,8 @@ function BookingDataBox({ booking }: Props) {
 				</p>
 			</header>
 
-			<section className="p-5 bg-grey-0  rounded-md overflow-hidden">
-				<div className="flex items-center gap-4 mb-6 text-grey-500 [&>p:first-of-type]:font-semibold [&>p:first-of-type]:text-grey-700">
+			<section className="p-5 bg-grey-0 dark:bg-dark-grey-0 rounded-md overflow-hidden">
+				<div className="flex items-center gap-4 mb-6 text-grey-500 dark:text-dark-grey-500 [&>p:first-of-type]:font-semibold [&>p:first-of-type]:text-grey-700 [&>p:first-of-type]:dark:text-dark-grey-700">
 					{countryFlag && (
 						<Flag
 							className="h-9 w-9"
@@ -91,7 +91,7 @@ function BookingDataBox({ booking }: Props) {
 
 				<div
 					data-is-paid={isPaid}
-					className="flex items-center justify-between py-5 px-11 rounded-sm mt-9 text-yellow-700 bg-yellow-100 data-[is-paid=true]:bg-green-100 data-[is-paid=true]:text-green-700 "
+					className="flex items-center justify-between py-5 px-11 rounded-sm mt-9 text-yellow-700 dark:text-dark-yellow-700 bg-yellow-100 dark:bg-dark-yellow-100 data-[is-paid=true]:bg-green-100 data-[is-paid=true]:dark-bg-dark-green-100 data-[is-paid=true]:text-green-700 data-[is-paid=true]:dark:text-dark-green-700 "
 				>
 					<DataItem
 						icon={<HiOutlineCurrencyDollar />}
@@ -111,7 +111,7 @@ function BookingDataBox({ booking }: Props) {
 				</div>
 			</section>
 
-			<footer className="py-6 px-12 text-xs text-grey-500 text-right font-bold">
+			<footer className="py-6 px-12 text-xs text-grey-500 dark:text-dark-grey-500 text-right font-bold">
 				<p>Booked {format(new Date(created_at), "EEE, MMM dd yyyy, p")}</p>
 			</footer>
 		</section>

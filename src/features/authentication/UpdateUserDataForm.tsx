@@ -44,7 +44,10 @@ function UpdateUserDataForm() {
 	}
 
 	return (
-		<Form onSubmit={handleSubmit} className="bg-grey-0 px-10 py-7 rounded-lg">
+		<Form
+			onSubmit={handleSubmit}
+			className="bg-grey-0 dark:bg-dark-grey-0 px-10 py-7 rounded-lg"
+		>
 			<FormRow label="Email address">
 				<input className="input" value={email} disabled={isUpdating} />
 			</FormRow>

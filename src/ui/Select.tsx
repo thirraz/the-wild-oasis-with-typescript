@@ -13,7 +13,7 @@ export function Select({ type, options, value, ...props }: Props) {
 			{...props}
 			value={value}
 			data-select-type={type}
-			className="data-[select-type=white]:border-grey-100 text-sm py-[0.8rem] px-6 rounded-sm bg-grey-0 font-medium shadow-sm border border-grey-300 pointer"
+			className="data-[select-type=white]:border-grey-100 data-[select-type=white]:dark:border-grey-100 text-sm py-[0.8rem] px-6 rounded-sm bg-grey-0 dark:bg-dark-grey-0 font-medium shadow-sm border border-grey-300 dark:border-dark-grey-300 pointer"
 		>
 			{options.map(option => (
 				<option value={option.value} key={option.value}>
@@ -23,7 +23,3 @@ export function Select({ type, options, value, ...props }: Props) {
 		</select>
 	)
 }
-
-// className={`text-[1.4rem] py-[0.8rem] px-[1.2rem] rounded-sm bg-grey-0 font-medium shadow-sm border ${
-// 	type === "white" ? "border-grey-100" : "border-grey-300"
-// } `}

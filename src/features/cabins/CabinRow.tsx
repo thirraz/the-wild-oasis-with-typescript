@@ -47,10 +47,10 @@ export default function CabinRow({ cabin }: Props) {
 					className="block max-w-[7rem] max-h-full aspect-[3/2] object-cover object-center translate-x-[-7px]"
 				/>
 			) : (
-				<div className="border border-grey-300 block max-w-[7rem] w-[7rem] max-h-full aspect-[3/2] object-cover object-center translate-x-[-7px]" />
+				<div className="border border-grey-300 dark:border-dark-grey-300 block max-w-[7rem] w-[7rem] max-h-full aspect-[3/2] object-cover object-center translate-x-[-7px]" />
 			)}
 
-			<span className="block font-sono font-bold text-grey-600">
+			<span className="block font-sono font-bold text-grey-600 dark:text-dark-grey-600">
 				{cabinName}
 			</span>
 
@@ -59,7 +59,7 @@ export default function CabinRow({ cabin }: Props) {
 			<div className="font-sono font-bold">
 				{formatCurrency(regularPrice)}
 			</div>
-			<div className="font-sono font-bold text-green-700">
+			<div className="font-sono font-bold text-green-700 dark:text-dark-green-700">
 				{discount ? formatCurrency(discount) : <span>&mdash;</span>}
 			</div>
 
