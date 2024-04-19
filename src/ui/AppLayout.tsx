@@ -13,12 +13,12 @@ export default function AppLayout() {
 		<div
 			className={`${
 				isDarkMode ? "dark" : ""
-			}  h-[100dvh] grid [grid-template-columns:20rem_1fr] [grid-template-rows:auto_1fr]`}
+			}  h-[100dvh] grid [grid-template-columns:20rem_1fr] [grid-template-rows:auto_1fr] bg-grey-50 dark:bg-dark-grey-50`}
 		>
 			<Sidebar />
 			<Header />
 
-			<main className="bg-grey-50 dark:text-grey-100 dark:bg-dark-grey-50 p-[4rem_4.8rem_0] overflow-y-scroll overflow-x-hidden ">
+			<main className="hide-scrollbar bg-grey-50 dark:text-grey-100 dark:bg-dark-grey-50 p-[4rem_4.8rem_0] overflow-y-scroll overflow-x-hidden ">
 				<div className="max-w-[120rem] mx-auto">
 					<Outlet />
 				</div>

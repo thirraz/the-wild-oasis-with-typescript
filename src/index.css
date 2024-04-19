@@ -41,6 +41,17 @@
 	}
 }
 
+* {
+	transition: background 0.3s ease-in-out;
+}
+.hide-scrollbar::-webkit-scrollbar {
+	display: none;
+}
+
+.hide-scrollbar::-moz-scrollbar {
+	display: none;
+}
+
 .input-btn::file-selector-button:hover {
 	background-color: #4338ca;
 }

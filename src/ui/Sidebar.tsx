@@ -5,7 +5,7 @@ import NavList from "./NavList"
 
 export default function Sidebar() {
 	return (
-		<aside className="bg-grey-0 dark:bg-dark-grey-0 py-[3.2rem] px-[2.4rem] border-r-[1px] border-grey-100 dark:border-dark-grey-100 row-span-full space-y-[3.2rem]">
+		<aside className="bg-grey-0 dark:bg-dark-grey-0 py-[2rem] px-[1.6rem] border-r-[1px] border-grey-100 dark:border-dark-grey-100 row-span-full space-y-[2rem]">
 			<Logo />
 			<NavList>
 				<MainNav />
