@@ -33,8 +33,8 @@ export default function Stats({
 
 	// 4.
 	const occupation =
-		confirmedStays.reduce((acc, cur) => acc + cur.numNights, 0) /
-		(numDays * cabinCount)
+		confirmedStays?.reduce((acc, cur) => acc + cur.numNights, 0) /
+		(numDays * cabinCount!)
 
 	return (
 		<>

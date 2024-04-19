@@ -3,7 +3,7 @@ import React from "react"
 type Props = {
 	icon: React.ReactNode
 	title: string
-	value: number | undefined
+	value: string | undefined
 	color: string
 }
 
