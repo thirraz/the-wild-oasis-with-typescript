@@ -4,7 +4,7 @@ import Header from "./Header"
 import { useDarkMode } from "../contexts/DarkModeContext"
 
 export default function AppLayout() {
-	const { isDarkMode, toggleDarkMode } = useDarkMode()
+	const { isDarkMode } = useDarkMode()
 
 	console.log(isDarkMode)
 
