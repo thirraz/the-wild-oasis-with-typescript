@@ -13,7 +13,7 @@ export default function AppLayout() {
 		<div
 			className={`${
 				isDarkMode ? "dark" : ""
-			}  h-[100dvh] grid [grid-template-columns:20rem_1fr] [grid-template-rows:auto_1fr] bg-grey-50 dark:bg-dark-grey-50`}
+			}  h-[100dvh] grid [grid-template-columns:20rem_1fr] [grid-template-rows:auto_1fr] bg-grey-50 dark:bg-dark-grey-50 overflow-y-hidden`}
 		>
 			<Sidebar />
 			<Header />

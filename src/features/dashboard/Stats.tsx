@@ -8,9 +8,7 @@ import Stat from "./Stat"
 import { formatCurrency } from "../../utils/helpers"
 
 type Props = {
-	bookings:
-		| { created_at: any; totalPrice: any; extrasPrice: any }[]
-		| undefined
+	bookings: any[] | undefined
 	confirmedStays: any[] | undefined
 	numDays: number
 	cabinCount: number | undefined

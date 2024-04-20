@@ -756,6 +756,13 @@
     "@types/prop-types" "*"
     csstype "^3.0.2"
 
+"@types/recharts@2":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@types/recharts/-/recharts-2.0.0.tgz#2fe20913b5d69b0fc0202c32ee7d9ffbfb36ac7a"
+  integrity sha512-O9iWQ9y0nu/EFslfBed6fZYJGzyjeSV+nv6S5UTLcoPVpeCUBJ1gap6VGfbYJJ59n+xQpVQnkaYZzhWmg8hifw==
+  dependencies:
+    recharts "*"
+
 "@types/semver@^7.5.0":
   version "7.5.8"
   resolved "https://registry.yarnpkg.com/@types/semver/-/semver-7.5.8.tgz#8268a8c57a3e4abd25c165ecd36237db7948a55e"
@@ -2161,7 +2168,7 @@ recharts-scale@^0.4.4:
   dependencies:
     decimal.js-light "^2.4.1"
 
-recharts@2:
+recharts@*, recharts@2:
   version "2.12.5"
   resolved "https://registry.yarnpkg.com/recharts/-/recharts-2.12.5.tgz#b335eb66173317dccb3e126fce1d7ac5b3cee1e9"
   integrity sha512-Cy+BkqrFIYTHJCyKHJEPvbHE2kVQEP6PKbOHJ8ztRGTAhvHuUnCwDaKVb13OwRFZ0QNUk1QvGTDdgWSMbuMtKw==
