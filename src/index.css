@@ -41,22 +41,25 @@
 	}
 }
 
-* {
-	transition: background 0.3s ease-in-out;
-}
-.hide-scrollbar::-webkit-scrollbar {
-	display: none;
-}
+@layer utilities {
+	* {
+		transition: background 0.3s ease-in-out;
+	}
 
-.hide-scrollbar::-moz-scrollbar {
-	display: none;
-}
+	.hide-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
 
-.input-btn::file-selector-button:hover {
-	background-color: #4338ca;
-}
+	.hide-scrollbar::-moz-scrollbar {
+		display: none;
+	}
 
-.filter-btn:hover:not(:disabled) {
-	background-color: #4f46e5;
-	color: #eef2ff;
+	.input-btn::file-selector-button:hover {
+		background-color: #4338ca;
+	}
+
+	.filter-btn:hover:not(:disabled) {
+		background-color: #4f46e5;
+		color: #eef2ff;
+	}
 }

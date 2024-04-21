@@ -6,11 +6,11 @@ import { useFetchCabins } from "../cabins/useFetchCabins"
 import { useRecentBookings } from "./useRecentBookings"
 import { useRecentStays } from "./useRecentStays"
 import DurationChart from "./DurationChart"
+import TodayActivity from "../check-in-out/TodayActivity"
 
 export default function DashboardLayout() {
 	const { bookings, isPending: isLoadingRecentBookings } = useRecentBookings()
 	const {
-		stays,
 		isPending: isLoadingRecentStays,
 		confirmedStays,
 		numDays
@@ -30,7 +30,7 @@ export default function DashboardLayout() {
 				cabinCount={cabins?.length}
 				numDays={numDays}
 			/>
-			<div>Today's activities</div>
+			<TodayActivity />
 			<DurationChart confirmedStays={confirmedStays} />
 			<SalesChart bookings={bookings} numDays={numDays} />
 		</div>

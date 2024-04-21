@@ -1,11 +1,24 @@
-import Button from "../../ui/Button";
+import Button from "../../ui/Button"
+import { useCheckout } from "./useCheckout"
 
-function CheckoutButton({ bookingId }) {
-  return (
-    <Button variation="primary" size="small">
-      Check out
-    </Button>
-  );
+type Props = {
+	bookingId: string | number
 }
 
-export default CheckoutButton;
+function CheckoutButton({ bookingId }: Props) {
+	const { checkout, isCheckingOut } = useCheckout()
+
+	return (
+		<Button
+			color="primary"
+			size="small"
+			onClick={() => checkout(bookingId)}
+			disabled={isCheckingOut}
+			className="text-sm bg-blue-700 dark:bg-dark-blue-100 hover:bg-grey-600 dark:hover:bg-grey-600"
+		>
+			Check out
+		</Button>
+	)
+}
+
+export default CheckoutButton

@@ -59,8 +59,8 @@ export default {
 
 			"dark-blue-100": "#075985",
 			"dark-blue-700": "#e0f2fe",
-			"dark-green-100": "#166534",
-			"dark-green-700": "#dcfce7",
+			"dark-green-100": "#dcfce7",
+			"dark-green-700": "#166534",
 			"dark-yellow-100": "#854d0e",
 			"dark-yellow-700": "#fef9c3",
 			"dark-silver-100": "#374151",

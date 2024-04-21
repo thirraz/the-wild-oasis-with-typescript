@@ -135,7 +135,7 @@ function prepareData(startData: any, stays: any) {
 }
 
 type Props = {
-	confirmedStays: any[]
+	confirmedStays: any[] | undefined
 }
 
 export default function DurationChart({ confirmedStays }: Props) {
