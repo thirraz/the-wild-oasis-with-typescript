@@ -5,6 +5,7 @@ import Stats from "./Stats"
 import { useFetchCabins } from "../cabins/useFetchCabins"
 import { useRecentBookings } from "./useRecentBookings"
 import { useRecentStays } from "./useRecentStays"
+import DurationChart from "./DurationChart"
 
 export default function DashboardLayout() {
 	const { bookings, isPending: isLoadingRecentBookings } = useRecentBookings()
@@ -22,16 +23,16 @@ export default function DashboardLayout() {
 	console.log(confirmedStays)
 
 	return (
-		<div className="grid [grid-template-columns:repeat(4,1fr)] [grid-template-rows:auto_34rem_auto] gap-8">
+		<div className="grid [grid-template-columns:repeat(4,1fr)] [grid-template-rows:repeat(3,auto)] gap-5">
 			<Stats
 				bookings={bookings}
 				confirmedStays={confirmedStays}
 				cabinCount={cabins?.length}
 				numDays={numDays}
 			/>
-			<SalesChart bookings={bookings} numDays={numDays} />
 			<div>Today's activities</div>
-			<div>Chart stays durations</div>
+			<DurationChart confirmedStays={confirmedStays} />
+			<SalesChart bookings={bookings} numDays={numDays} />
 		</div>
 	)
 }
