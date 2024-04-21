@@ -27,11 +27,10 @@ type Props = {
 function BookingRow({
 	booking: {
 		id: bookingId,
-		createdAt: created_at,
 		startDate,
 		endDate,
 		numNights,
-		numGuests,
+
 		totalPrice,
 		status,
 		guests: { fullName, email },
