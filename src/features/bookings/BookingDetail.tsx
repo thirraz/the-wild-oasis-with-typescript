@@ -52,12 +52,12 @@ function BookingDetail() {
 
 			<div className="flex gap-4 justify-end">
 				{status === "unconfirmed" && (
-					<button
+					<Button
 						onClick={() => navigate(`/checkin/${bookingId}`)}
-						className="flex justify-center items-center px-14 py-3 gap-4 w-full hover:bg-grey-100 dark:hover:bg-dark-grey-100"
+						className="max-w-fit flex justify-center items-center px-14 py-3 gap-4 w-full"
 					>
-						<span className="min-w-max">Check-in</span>
-					</button>
+						Check-in
+					</Button>
 				)}
 
 				{status === "checked-in" && (
