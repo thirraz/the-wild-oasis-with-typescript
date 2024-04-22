@@ -5,8 +5,8 @@ import { useLogin } from "./useLogin"
 import SpinnerMini from "../../ui/SpinnerMini"
 
 function LoginForm() {
-	const [email, setEmail] = useState("jonas@example.com")
-	const [password, setPassword] = useState("passpass")
+	const [email, setEmail] = useState("")
+	const [password, setPassword] = useState("")
 	const { login, isPending } = useLogin()
 
 	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
