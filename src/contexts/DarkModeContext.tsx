@@ -1,4 +1,5 @@
-import { createContext, useContext, useState } from "react"
+import { createContext, useContext } from "react"
+import { useLocalStorageState } from "../hooks/useLocalStorageState"
 
 type ContextProperties = {
 	isDarkMode: boolean
@@ -15,9 +16,13 @@ function DarkModeProvider({
 }: {
 	children: React.ReactNode | React.ReactNode[]
 }) {
-	const [isDarkMode, setIsDarkMode] = useState<boolean>(false)
+	// const [isDarkMode, setIsDarkMode] = useState<boolean>(false)
+	const [isDarkMode, setIsDarkMode] = useLocalStorageState(
+		window.matchMedia("(prefers-color-scheme:dark)").matches,
+		"isDarkMode"
+	)
 
-	const toggleDarkMode = () => setIsDarkMode(dark => !dark)
+	const toggleDarkMode = () => setIsDarkMode((dark: boolean) => !dark)
 
 	return (
 		<DarkModeContext.Provider value={{ isDarkMode, toggleDarkMode }}>

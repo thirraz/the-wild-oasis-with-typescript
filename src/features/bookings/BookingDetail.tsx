@@ -13,6 +13,7 @@ import { HiArrowUpOnSquare } from "react-icons/hi2"
 import { Modal } from "../../ui/Modal"
 import ConfirmDelete from "../../ui/ConfirmDelete"
 import { useDeleteBooking } from "./useDeleteBooking"
+import Empty from "../../ui/Empty"
 
 function BookingDetail() {
 	const { booking, isPending: isFetching } = useFetchBooking()
@@ -24,6 +25,7 @@ function BookingDetail() {
 	const moveBack = useMoveBack()
 
 	if (isFetching) return <Spinner />
+	if (!booking) return <Empty resource="booking" />
 
 	const { status, id: bookingId } = booking
 

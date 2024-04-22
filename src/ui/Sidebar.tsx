@@ -1,4 +1,3 @@
-import Uploader from "../data/Uploader"
 import Logo from "./Logo"
 import MainNav from "./MainNav"
 import NavList from "./NavList"
@@ -10,7 +9,6 @@ export default function Sidebar() {
 			<NavList>
 				<MainNav />
 			</NavList>
-			<Uploader />
 		</aside>
 	)
 }
