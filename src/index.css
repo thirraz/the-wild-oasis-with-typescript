@@ -33,7 +33,7 @@
 	}
 
 	.filter-btn {
-		@apply bg-grey-0  dark:bg-dark-grey-0  dark:data-[btn-active=true]:bg-brand-600 data-[btn-active=true]:text-grey-50 text-grey-600 dark:text-dark-grey-600 rounded-sm font-semibold text-sm py-[0.44rem] px-[0.8rem] transition-all [&:hover:not(:disabled)]:bg-brand-600 [&:hover:not(:disabled)]:text-brand-50;
+		@apply bg-grey-0  dark:bg-dark-grey-0 data-[btn-active=true]:bg-brand-600  dark:data-[btn-active=true]:bg-brand-600 data-[btn-active=true]:text-grey-50 text-grey-600 dark:text-dark-grey-600 rounded-sm font-semibold text-sm py-[0.44rem] px-[0.8rem] transition-all [&:hover:not(:disabled)]:bg-brand-600 [&:hover:not(:disabled)]:text-brand-50;
 	}
 
 	.pagination-btn {
