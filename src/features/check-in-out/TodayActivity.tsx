@@ -40,9 +40,12 @@ export default function TodayActivity() {
 	const { activities, isPending } = useTodayActivity()
 
 	return (
-		<div className="bg-grey-0 dark:bg-dark-grey-0 border border-grey-100 dark:border-dark-grey-100 rounded-md py-12 px-6 flex flex-col gap-9 col-start-1 col-span-2">
+		<div className=" max-h-80 overflow-h-scroll bg-grey-0 dark:bg-dark-grey-0 border border-grey-100 dark:border-dark-grey-100 rounded-md py-12 px-6 flex flex-col gap-9 col-start-1 col-span-2">
 			<Row direction="horizontal">
-				<h2 className="text-lg">Today Activities</h2>
+				<h2 className="text-lg">
+					Today Activities{" "}
+					<span className="text-grey-600">(scroll to se more)</span>
+				</h2>
 			</Row>
 
 			{!isPending ? (

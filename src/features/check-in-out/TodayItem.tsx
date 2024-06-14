@@ -53,9 +53,9 @@ export default function TodayItem({ id, status, guests, numNights }: Props) {
 					Departing
 				</Tag>
 			)}
-			<Flag src={guests.countryFlag} alt={`Flag of ${guests.country}`} />
+			<Flag src={guests?.countryFlag} alt={`Flag of ${guests?.country}`} />
 			<div className="w-20 overflow-hidden text-ellipsis  text-sm font-semibold">
-				{guests.fullName}
+				{guests?.fullName}
 			</div>
 			<p>{numNights} nights</p>
 
