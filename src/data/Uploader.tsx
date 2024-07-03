@@ -125,18 +125,24 @@ function Uploader() {
 		setIsLoading(false)
 	}
 
+	async function callDBFunctions() {
+		setIsLoading(true)
+		await uploadAll()
+		await uploadBookings()
+		setIsLoading(false)
+
+		location.reload()
+	}
+
 	return (
 		<div className="animate-wiggle hover:animate-none mt-auto bg-[#e0e7ff] p-2 rounded-sm text-center flex flex-col justify-center items-center gap-2">
 			<h3 className="text-md font-semibold">
-				to show the data, please click on those buttons
+				to show the data, please click on those buttons. After that, click
+				on F5
 			</h3>
 
-			<Button onClick={uploadAll} disabled={isLoading} size="small">
+			<Button onClick={callDBFunctions} disabled={isLoading} size="small">
 				Upload ALL
-			</Button>
-
-			<Button onClick={uploadBookings} disabled={isLoading} size="small">
-				Upload bookings ONLY
 			</Button>
 		</div>
 	)
