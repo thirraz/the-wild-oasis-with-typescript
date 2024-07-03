@@ -6,6 +6,15 @@ export default {
 			backgroundImage: {
 				"spinner-gradient":
 					"radial-gradient(farthest-side, var(--color-brand-600) 94%, #0000) top/10px 10px no-repeat, conic-gradient(#0000 30%, var(--color-brand-600))"
+			},
+			keyframes: {
+				wiggle: {
+					"0%, 100%": { transform: "rotate(-3deg)" },
+					"50%": { transform: "rotate(3deg)" }
+				}
+			},
+			animation: {
+				wiggle: "wiggle 1s ease-in-out infinite"
 			}
 		},
 		colors: {

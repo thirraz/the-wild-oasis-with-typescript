@@ -126,26 +126,16 @@ function Uploader() {
 	}
 
 	return (
-		<div
-			className="mt-auto bg-[#e0e7ff] p-2 rounded-sm text-center flex flex-col justify-center items-center gap-2"
-			// style={{
-			// 	marginTop: "auto",
-			// 	backgroundColor: "#e0e7ff",
-			// 	padding: "8px",
-			// 	borderRadius: "5px",
-			// 	textAlign: "center",
-			// 	display: "flex",
-			// 	flexDirection: "column",
-			// 	gap: "8px"
-			// }}
-		>
-			<h3 className="text-lg font-semibold">SAMPLE DATA</h3>
+		<div className="animate-wiggle hover:animate-none mt-auto bg-[#e0e7ff] p-2 rounded-sm text-center flex flex-col justify-center items-center gap-2">
+			<h3 className="text-md font-semibold">
+				to show the data, please click on those buttons
+			</h3>
 
-			<Button onClick={uploadAll} disabled={isLoading}>
+			<Button onClick={uploadAll} disabled={isLoading} size="small">
 				Upload ALL
 			</Button>
 
-			<Button onClick={uploadBookings} disabled={isLoading}>
+			<Button onClick={uploadBookings} disabled={isLoading} size="small">
 				Upload bookings ONLY
 			</Button>
 		</div>
