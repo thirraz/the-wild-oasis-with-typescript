@@ -137,8 +137,8 @@ function Uploader() {
 	return (
 		<div className="animate-wiggle hover:animate-none mt-auto bg-[#e0e7ff] p-2 rounded-sm text-center flex flex-col justify-center items-center gap-2">
 			<h3 className="text-md font-semibold">
-				to show the data, please click on those buttons. After that, click
-				on F5
+				to show the data, please click on this button. After that, click on
+				F5
 			</h3>
 
 			<Button onClick={callDBFunctions} disabled={isLoading} size="small">
